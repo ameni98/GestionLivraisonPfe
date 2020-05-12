@@ -1,0 +1,124 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<head>
+    <title>supprimer chauffeur</title>
+       <meta charset="UTF-8"></meta>
+</head>
+<body>
+<div layout:fragment="breadcrumb">
+    <h1>Etes vous sur de supprimer ce chauffeur?</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">suppression de chauffeur</li>
+    </ol>
+</div>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">&nbsp;</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form  th:object="${chauffeur}" th:action="@{/chauffeur/delete}" id="formDelete" method="POST">
+
+                    <div class="box-body">
+                         <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text"
+                                   th:field="*{nom}"
+                                   name="Nom" class="form-control" id="Nom" placeholder="Nom"
+                                   disabled/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Prenom">Prenom</label>
+                            <input type="text"
+                                   th:field="*{prenom}"
+                                   name="Prenom" class="form-control"  id="Prenom" placeholder="Prenom" disabled/>
+                        </div>
+
+
+                   
+                       <div class="form-group">
+                            <label for="DateNai"> Date de naissance</label>
+                            <input type="text"
+                                   th:field="*{DateNai}"
+                                   name="DateNai" class="form-control" id="DateNai" placeholder="DateNai"
+                                   disabled/>
+                        </div>
+                        <div class="form-group">
+                            <label for="NumTel">Numéro de telephone</label>
+                            <input type="text"
+                                   th:field="*{NumTel}"
+                                   name="NumTel" class="form-control" id="NumTel" placeholder="NumTel"
+                                   disabled/>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="NumPermis">Numéro de permis</label>
+                            <input type="text"
+                                   th:field="*{NumPermi}"
+                                   name="NumPermis" class="form-control" id="NumPermis" placeholder="NumPermis"
+                                   disabled/>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="etat">Etat disponibilité</label>
+                            <input type="text"
+                                   th:field="*{etatDispo}"
+                                   name="etatDispo" class="form-control" id="etatDispo" placeholder="etatDispo"
+                                   disabled/>
+                        </div>
+                          <div class="form-group">
+                            <label for="login">Login</label>
+                            <input type="text"
+                                   th:field="*{login}"
+                                   name="nomUtilisateur" class="form-control" id="nomUtilisateur" placeholder="nomUtilisateur"
+                                   disabled/>
+                        </div>
+                         <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <input type="text"
+                                   th:field="*{MotPasse}"
+                                   name="password" class="form-control" id="password" placeholder="password"
+                                   disabled/>
+                        </div>
+                        <div class="form-group">
+                       <input type="hidden"
+                                   th:field="*{id}"
+                                   name="id" class="form-control" id="marque"
+                                   />
+                        </div>
+                         <div class="form-group">
+                          <input type="hidden"
+                                   th:field="*{idEtat}"
+                                   name="id" class="form-control" id="marque"
+                                   />
+                        </div>
+                            
+                            
+               
+
+
+                        <div class="form-group">
+                            <a th:href="@{/chauffeur/list}" class="btn btn-default" role="button" title="Back list">
+                                <span aria-hidden="true"></span>Annuler
+                            </a>
+                            <button type="submit" class="btn btn-danger" title="Delete Data">Valider</button>
+                        </div>
+                        
+                    </div>
+                    <!-- /.box-body -->
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html> 

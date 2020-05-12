@@ -1,0 +1,83 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<head>
+    <title>supprimer véhicule</title>
+       <meta charset="UTF-8"></meta>
+</head>
+<body>
+<div layout:fragment="breadcrumb">
+    <h1>Etes vous sur de supprimer cet véhicule?</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">suppression de véhicule</li>
+    </ol>
+</div>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">&nbsp;</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form  th:object="${vehicule}" th:action="@{/vehicule/delete}" id="formDelete" method="POST">
+
+                    <div class="box-body">
+                         <div class="form-group">
+                            <label for="marque">Marque</label>
+                            <input type="text"
+                                   th:field="*{marque}"
+                                   name="marque" class="form-control" id="marque" placeholder="marque"
+                                   disabled/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Matircule">Matircule</label>
+                            <input type="text"
+                                   th:field="*{matricule}"
+                                   name="Matircule" class="form-control"  id="Matircule" placeholder="matricule" disabled/>
+                        </div>
+
+
+                   
+                       <div class="form-group">
+                            <label for="modele">Modéle</label>
+                            <input type="text"
+                                   th:field="*{modele}"
+                                   name="modele" class="form-control" id="modele" placeholder="modele"
+                                   disabled/>
+                        </div>
+                        <div class="form-group">
+                            <label for="modéle">Charge</label>
+                            <input type="text"
+                                   th:field="*{capacite}"
+                                   name="Charge" class="form-control" id="Charge" placeholder="Charge"
+                                   disabled/>
+                        </div>
+                        <div class="form-group">
+                       <input type="hidden"
+                                   th:field="*{id}"
+                                   name="id" class="form-control" id="marque"
+                                   />
+                        </div>
+                            
+               
+
+
+                        <div class="form-group">
+                            <a th:href="@{/vehicule/list}" class="btn btn-default" role="button" title="Back list">
+                                <span aria-hidden="true"></span>Annuler
+                            </a>
+                            <button type="submit" class="btn btn-danger" title="Delete Data">Valider</button>
+                        </div>
+                        
+                    </div>
+                    <!-- /.box-body -->
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

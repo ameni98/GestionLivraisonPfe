@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8" />
+
+  <head>
+    <title>Livraison &mdash;</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css"
+  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+	
+	<script  type="text/javascript">		
+function change(selectedValue)
+{ 
+if(selectedValue=="physique")
+	{
+	//l'élément à créer
+    let	divElem= document.createElement("div");
+	divElem.id="physique";
+	divElem.className="form-group row";
+	
+	
+	//l'élément à insérer apres 
+	let typeDes=document.getElementById('typeDes');
+	//l'élement parent 
+	let formCont=document. getElementById('form-commande');
+	
+	let elementParent = typeDes.parentNode;
+	
+	elementParent.insertBefore(divElem, typeDes.nextSibling);
+//création de label
+      labelNom= document.createElement("label");
+
+labelNom.for="inputNomclient";
+labelNom.className="control-label col-md-2";
+labelNom.id="labelNom";
+labelNom.textContent="nom de client";
+//ajouter label a la div
+divElem.appendChild(labelNom);
+//création de input
+let inuptCli=document.createElement("input");
+inuptCli.type="text"	;
+inuptCli.className="form-control col-md-9";
+inuptCli.id="inputNomclient";
+divElem.appendChild(inuptCli);
+//ajouter de input à l'élément div
+
+//création de label
+      labelPrenom= document.createElement("label");
+
+      labelPrenom.for="inputNomclient";
+      labelPrenom.className="control-label col-md-2";
+      labelPrenom.textContent="Prenom de client";
+//ajouter label a la div
+divElem.appendChild(labelPrenom);
+//création de input
+let inuptPren=document.createElement("input");
+inuptPren.type="text"	;
+inuptPren.className="form-control col-md-9";
+inuptPren.id="inputPrenomclient";
+//ajouter de input à l'élément div
+divElem.appendChild(inuptPren);
+
+document.getElementById("form-commande").removeChild(document.getElementById('morale'));
+	}
+else if(selectedValue=="morale"){
+	//l'élément à créer
+    let	divElem= document.createElement("div");
+	divElem.id="morale";
+	divElem.className="form-group row";
+	
+	
+	//l'élément à insérer apres 
+	let typeDes=document.getElementById('typeDes');
+	//l'élement parent 
+	let formCont=document. getElementById('form-commande');
+	
+	let elementParent = typeDes.parentNode;
+	
+	elementParent.insertBefore(divElem, typeDes.nextSibling);
+//création de label
+      labelNom= document.createElement("label");
+
+labelNom.for="inputNomclient";
+labelNom.id="raisonSociale";
+labelNom.className="control-label col-md-2";
+labelNom.textContent="Raison sociale";
+//ajouter label a la div
+divElem.appendChild(labelNom);
+//création de input
+let inuptCli=document.createElement("input");
+inuptCli.type="text"	;
+inuptCli.className="form-control col-md-9";
+inuptCli.id="inputRaisonSociale";
+divElem.appendChild(inuptCli);
+//ajouter de input à l'élément div
+document.getElementById("form-commande").removeChild(document.getElementById('physique'));
+
+}
+else{document.getElementById("form-commande").removeChild(document.getElementById('physique'));
+document.getElementById("form-commande").removeChild(document.getElementById('morale'));
+	
+}
+}
+
+</script>
+<script type="text/javascript" th:inline="javascript">
+function changeGouv(selected)
+{/*<![CDATA[*/
+	var idGouver=document.getElementById("gouverSelect").value;
+	console.log(idGouver);
+	let villes= /*[[${villes}]]*/ 
+	//selectVille= document.createElement("select");
+
+		console.log(villes.length);
+	/*for(i=0;i<villes.length;i++)
+	{
+		 var  optionVille= document.createElement("option");
+		 optionVille.value=villes[i].nom;
+			selectVille.appendChild(optionVille);
+	}	*/
+	
+//	divVille=document.getElementById("villeId");
+/*	labelVille=document.getElementById("labelVille");
+	divVille.insertBefore(selectVille,labelVille)*/
+	
+	//console.log("divVille")
+	//divVille.appendChild(selectVille);
+	
+}
+	
+
+
+//if(document.getElementById("gouverSelect").selected!=null)
+
+
+
+
+</script>	
+	
+ </head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">RapidLivraison2020@gmail.com</span></a>
+              <span class="mx-md-2 d-inline-block"></span>
+              <a href="#" class=""><span class="mr-2  icon-phone"></span> <span class="d-none d-md-inline-block">+ (216) 54542196</span></a>
+
+
+              <div class="float-right">
+
+                <a href="#" class=""><span class="mr-2  icon-twitter"></span> <span class="d-none d-md-inline-block">Twitter</span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                <a href="#" class=""><span class="mr-2  icon-facebook"></span> <span class="d-none d-md-inline-block">Facebook</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+       <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">Rapid Livraison</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+               <li><a th:href="@{/Accueil}" class="nav-link">Acceuil</a></li>
+                  <li><a th:href="@{/Accueil#services-section}" class="nav-link">Services</a></li>
+                                    <li><a th:href="@{/}" class="nav-link">Expédier</a></li>
+               <li>
+                    <a  th:href="@{/commande}"  class="nav-link">Historique </a>
+                  </li>
+                  <li>
+                    <a  th:href="@{/suiviColis}"  class="nav-link">Suivi vos colis </a>
+                  </li>
+                   <li >
+                    <a  th:href="@{/editProfil}"  class="nav-link">Modifier votre profil</a>
+                  </li>
+                    <li sec:authorize="isAuthenticated()"><a class="glyphicon glyphicon-log-out" th:href="@{/logout}">Se déconnecter</a></li>
+
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+       
+
+      </header>
+       </div>
+   <div class="text-center container" id="blog-section">
+     <div class="alert alert-info" th:text="${message}"> </div>
+        	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+        <h2 class="text-center">Veuiller Remplir ce formulaire pour transporter votre colis</h2>
+
+        <form  th:object="${colis}" id="form-commande" method="post" th:action="@{/commande}" style="width: 80%; margin: auto;">
+     <div class="form-group" style="text-align: left">
+  <label class="control-label"> Address de l'expéditeur </label>
+  </div> 
+  <div class="form-group row">
+  
+    <label for="inputAddress"  class="control-label col-md-2">Address</label> 
+    <input type="text" required="required" class="form-control col-md-9" id="inputAddress" th:field="*{adresse_marchand}">
+  </div>
+   <!-- <div class=" form-group row"  >
+      <label for="inputVille" class=" control-label col-md-2">Ville</label>
+      <select required="required" id="inputState" class="form-control col-md-9" th:field="*{ville_marchand}" >   
+        <option th:each="villeOpt : ${T(net.javaguides.springboot.springsecurity.model.Ville).values()}"
+       th:text="${villeOpt}" th:value="${villeOpt}"></option>
+       
+     </select>
+    </div> -->
+   <div class="form-group row">
+      <label for="inputposte" class="control-label col-md-2">Code postale</label>
+      <input type="text" class="form-control col-md-9"  title="Le code postale doit contenir 4 chiffres" pattern="[0-9]{4}"
+     required="required" id="inputposte" th:field="*{code_Postale_marchand}"
+      th:value="${colis?.code_Postale_marchand}">
+    </div>
+   
+       <div class="form-group row">
+      <label for="inputposte" class="col-md-2">Poids en Kg</label>
+      <input type="text" class="form-control col-md-9" id="inputposte" th:field="*{poids}">
+    </div>
+   <div class="form-group row">
+      <label for="inputState" class="col-md-2" >Nature de marchandise</label>
+      <select id="inputState" class="form-control col-md-9"   th:field="*{desc_Colis}">   
+        <option  th:value="Marchandise" selected>Marcahndises</option>
+                  <option  th:value="Documents"> Documents</option>
+                       <option th:value="Meubles"  >Meubles</option>
+                        <option  th:value="Autre">Autres </option>
+       
+     </select>
+    
+    </div>
+
+  <div class="form-group" style="text-align: left"><label control-label> Address de destination </label></div>
+  <div class="form-group row">
+  
+    <label for="inputAddress" class="col-md-2" >Address</label>
+    <input type="text" required="required"class="form-control col-md-9" id="inputAddress"  th:field="*{adresse_client}"
+    th:value="${colis?.adresse_client}">
+  </div>
+     <div class="form-group row" >
+      <label for="inputState" class="col-md-2" th:field="*{id_Gouvernerat}" >Gouvernerat</label>
+      <select class="form-control col-md-9" id="gouverSielect" th:onchange="'changeGouv(this.value);'" >
+      <option th:value="--"></option>
+      <option th:each="gouvernerat:${gouvernerats}"  id="gouverSelect" th:text="${gouvernerat.nom}" th:value="${gouvernerat.id}"> </option>
+    
+      </select>
+      <!-- <select required="required" id="inputState" class="form-control col-md-9" th:field="*{ville_client}"  >   
+        <option th:each="villeOpt : ${T(net.javaguides.springboot.springsecurity.model.Ville).values()}"
+         th:text="${villeOpt}" th:value="${villeOpt}" ></option>  
+     </select> -->
+    
+    </div>
+  <div class="form-group row" id="villeId">
+      <label for="inputState" class="col-md-2" id="labelVille">Ville</label>
+      <select class="form-control col-md-9" th:field="*{ville_client}" id="selectVille"></select>
+    <!-- <select class="form-control col-md-9" th:field="*{ville_client}">
+      <option th:each="ville:${villes}" th:text="${ville.nom}" th:value="${ville.nom}"> </option>
+   -->   
+    
+    </div>
+
+ 
+ 
+ 
+    
+
+   <div class="form-group row">
+      <label for="inputposte2" class="col-md-2">Code Postale</label>
+      <input type="text"  pattern="[0-9]{4}"
+    required="required"  class="form-control col-md-9" id="inputposte2" th:value="${colis?.code_Postale_client}"th:field="*{code_Postale_client}"/>
+    </div>
+
+  <div class="form-group row" id="typeDes">
+      <label for="inputState1" class="col-md-2" >type de destination</label>
+      <select id="inputState1" class="form-control col-md-9"   th:field="*{type_destination}"th:onchange="'change(this.value);'" >
+     
+      <!--  onchange="change()"-->
+   
+       <option  th:value="--" ></option>
+        <option  th:value="physique" >physique</option>
+                  <option  th:value="morale"> morale</option>
+     </select>
+    
+    </div>
+      <div class="form-group row" >
+  
+    <label for="inputNumtel"  class="control-label col-md-2">numéro de télephone de client</label> 
+    <input type="text" required="required" class="form-control col-md-9" id="inputNumtel" th:field="*{numTel_client}">
+  </div>
+    
+   <div class="form-group row">
+
+					
+			
+    <label for="inputPrenomclient"  class="control-label col-md-2">prénom de client</label> 
+    <input type="text" required="required" class="form-control col-md-9" id="inputPrenomclient" th:field="*{prenom_client}">
+  </div>
+  
+  <button type="submit" class="btn btn-warning">Envoyer </button>
+  
+  </form>
+    
+      </div>
+      <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/aos.js"></script>
+
+    <script src="js/main.js"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,834 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8" />
+ <meta name="_csrf" th:content="${_csrf.token}"/>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+  <head>
+    <title>Livraison &mdash;</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css"
+  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" type="text/css"
+  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+  <style type="text/css"> #field1
+{
+float: left;
+}
+th, td {
+  border: 1px solid black;
+}
+.visible{display:none;}
+
+.inval {
+	border: 1px solid red;
+}
+</style>
+
+</head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <script  src="webjars/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" th:inline="javascript">
+function changeMarc(selectedValue)
+{
+	if(selectedValue=="Autre")
+	{
+		//l'élément à créer
+	    let	divElem= document.createElement("div");
+		//divElem.id="physique";
+		divElem.className="form-group row";
+		divElem.id="divAutres";
+		
+		
+		//l'élément à insérer apres divNom 
+		let NatureMarch=document.getElementById('NatureMarch');
+		//l'élement parent 
+		let formCont=document. getElementById('form-commande');
+		
+		let elementParent = NatureMarch.parentNode;
+		
+		elementParent.insertBefore(divElem, NatureMarch.nextSibling);
+	//création de label
+	      labelAutres= document.createElement("label");
+	      labelAutres.for="labelMarch";
+	      labelAutres.className="control-label col-md-3";
+	      labelAutres.id="labelMarch";
+	      labelAutres.textContent="Autres";
+	//ajouter label a la div
+	divElem.appendChild(labelAutres);
+	//création de input
+	let inuptMarch=document.createElement("input");
+	inuptMarch.type="text"	;
+	inuptMarch.className="form-control col-md-9 marchandise";
+	inuptMarch.id="inuptMarch";
+	inuptMarch.value="";
+
+
+	divElem.appendChild(inuptMarch);
+	//ajouter de input à l'élément div
+	}
+	else{
+		var autre=document.getElementById('divAutres');
+		if(autre!=null)
+			{
+		document.getElementById("panel-body3").removeChild(autre);
+		}
+
+
+		}	
+	
+	}
+
+
+
+function change(selectedValue)
+{ 
+if(selectedValue=="physique")
+	{
+	//l'élément à créer
+    let	divElem= document.createElement("div");
+	//divElem.id="physique";
+	divElem.className="form-group row";
+	divElem.id="divNom";
+	
+	
+	//l'élément à insérer apres divNom 
+	let typeDes=document.getElementById('typeDes');
+	//l'élement parent 
+	let formCont=document. getElementById('form-commande');
+	
+	let elementParent = typeDes.parentNode;
+	
+	elementParent.insertBefore(divElem, typeDes.nextSibling);
+//création de label
+      labelNom= document.createElement("label");
+labelNom.for="labelNomclient";
+labelNom.className="control-label col-md-3";
+labelNom.id="labelNom";
+labelNom.textContent="nom de client";
+//ajouter label a la div
+divElem.appendChild(labelNom);
+//création de input
+let inuptNom=document.createElement("input");
+inuptNom.type="text"	;
+inuptNom.className="form-control col-md-9 physique";
+inuptNom.id="inputNomclient";
+inuptNom.value="";
+
+
+divElem.appendChild(inuptNom);
+//ajouter de input à l'élément div
+
+
+
+//l'élément à créer
+    let	divElem2= document.createElement("div");
+	//divElem.id="physique";
+	divElem2.className="form-group row";
+	divElem2.id="divPren";
+	
+	//l'élément à insérer apres 
+	let divNom=document.getElementById('divNom');
+	//l'élement parent 
+	
+	let elementParent1 = divNom.parentNode;
+	
+	elementParent1.insertBefore(divElem2, divNom.nextSibling);
+//création de label
+      labelPrenom= document.createElement("label");
+
+      labelPrenom.for="inputPrenomclient";
+      labelPrenom.className="control-label col-md-3";
+      labelPrenom.textContent="Prénom de client";
+//ajouter label a la div
+divElem2.appendChild(labelPrenom);
+//création de input
+let inuptPren=document.createElement("input");
+inuptPren.type="text"	;
+inuptPren.className="form-control col-md-9 physique";
+inuptPren.id="inputPrenomclient";
+//ajouter de input à l'élément div
+divElem2.appendChild(inuptPren);
+var s=document.getElementById('divRaiSoci1');
+var ns=document.getElementById('div1Nom');
+if((s!=null)&& (ns!=null))
+{
+document.getElementById("panel-body").removeChild(s);
+document.getElementById("panel-body").removeChild(ns);}
+
+
+	
+}
+else if(selectedValue=="morale"){
+	//l'élément à créer
+    let	divElem= document.createElement("div");
+	divElem.id="divRaiSoci1";
+	divElem.className="form-group row";
+	
+	
+	//l'élément à insérer apres 
+	let typeDes=document.getElementById('typeDes');
+	//l'élement parent 
+	let formCont=document. getElementById('form-commande');
+	
+	let elementParent = typeDes.parentNode;
+	
+	elementParent.insertBefore(divElem, typeDes.nextSibling);
+//création de label
+      raisonSocialeLabel= document.createElement("label");
+
+      raisonSocialeLabel.for="raisonSocialeLabel";
+      raisonSocialeLabel.id="raisonSocialeLabel";
+      raisonSocialeLabel.className="control-label col-md-3";
+      raisonSocialeLabel.textContent="Raison sociale";
+//ajouter label a la div
+divElem.appendChild(raisonSocialeLabel);
+//création de input
+let raisonSocialeInput=document.createElement("input");
+raisonSocialeInput.type="text"	;
+raisonSocialeInput.className="form-control col-md-9 morale";
+raisonSocialeInput.id="inputRaisonSociale";
+//ajouter de input à l'élément div
+divElem.appendChild(raisonSocialeInput);
+
+
+
+//l'élément à créer
+    let	divElem2= document.createElement("div");
+	//divElem.id="physique";
+	divElem2.className="form-group row";
+	divElem2.id="div1Nom";
+	
+	//l'élément à insérer apres 
+	let divRaiSoci1=document.getElementById('divRaiSoci1');
+	//l'élement parent 
+	
+	let elementParent1 = divRaiSoci1.parentNode;
+	
+	elementParent1.insertBefore(divElem2, divRaiSoci1.nextSibling);
+//création de label
+      labelNom= document.createElement("label");
+
+      labelNom.for="inputNom1client";
+      labelNom.className="control-label col-md-3";
+      labelNom.textContent="Nom de client";
+//ajouter label a la div
+divElem2.appendChild(labelNom);
+//création de input
+let inuptNom=document.createElement("input");
+inuptNom.type="text"	;
+inuptNom.className="form-control col-md-9 morale";
+inuptNom.id="inputNom1client";
+//ajouter de input à l'élément div
+divElem2.appendChild(inuptNom);
+
+
+var n=document.getElementById('divNom');
+var p=document.getElementById('divPren');
+if((n!=null) && (p!=null))
+	{
+	
+	
+document.getElementById("panel-body").removeChild(n);
+document.getElementById("panel-body").removeChild(p);}
+
+
+}
+else{
+	var n=document.getElementById('divNom');
+	var p=document.getElementById('divPren');
+	var s=document.getElementById('divRaiSoci1');
+	var ns=document.getElementById('div1Nom');
+	if((n!=null) && (p!=null))
+		{
+	document.getElementById("panel-body").removeChild(n);
+	document.getElementById("panel-body").removeChild(p);
+	}
+	else if((s!=null)&& (ns!=null))
+		{
+		document.getElementById("panel-body").removeChild(s);
+		document.getElementById("panel-body").removeChild(ns);}
+
+		}
+
+	}	
+
+
+
+</script>
+<script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	 $("#selectType").change(function() {
+	
+		  if(($("#divNom").css("visibility")!="hidden")&&($("#divPren").css("visibility")!="hidden")){
+			
+			  $('#inputNomclient').blur(function()
+					  {
+					if(this.value) {
+					var inputNomclient= this.value;
+					
+					    document.getElementById('nomhi').value=	inputNomclient;	
+			   }
+					 
+		  });
+		  
+			  //blur2
+		  $('#inputPrenomclient').blur(function()
+					  {
+					if(this.value) {
+					    var inputPrenomclient= this.value;
+					    document.getElementById('prenhi').value=inputPrenomclient;	
+					
+					  }  	
+					  });
+		
+	 }
+		
+		  if(($("#divRaiSoci1").css("visibility")!="hidden")&&($("#div1Nom").css("visibility")!="hidden")){
+
+		  $('#inputRaisonSociale').blur(function()
+				  {
+				if(this.value) {
+				    var inputRaisonSociale= this.value;
+				  
+				    document.getElementById('morlhi').value=inputRaisonSociale;	
+					
+				}
+				  });
+		  $('#inputNom1client').blur(function()
+				  {
+				if(this.value) {
+				    var inputNom1client= this.value;
+				    document.getElementById('nomhi').value=inputNom1client;	
+				
+				  }  	
+				  });
+	
+		  
+		 }	 
+		  });});
+		 
+
+$(document).ready(function(){
+	 $("#selectAutre").change(function() {
+	
+		  if($("#divAutres").css("visibility")!="hidden")
+			{
+			  $('#inuptMarch').blur(function()
+					  {
+					if(this.value) {
+					var inuptMarch= this.value;
+					
+					    document.getElementById('autreMar').value=	inuptMarch;	
+			   }
+					 
+		  });
+		  
+	 }	 
+		  });});
+
+		
+	
+
+	
+</script>
+<script type="text/javascript">
+
+
+
+
+
+ $(document).ready(function() {
+	  
+	var token = $("meta[name='_csrf']").attr("content");
+	  var header = $("meta[name='_csrf_header']").attr("content");
+	  $(document).ajaxSend(function(e, xhr, options) {
+	      xhr.setRequestHeader(header, token);
+	  });
+	    $("#gouverSielect").change(function() {
+	    	//alert("hello");
+	      var gouverneratId = $(this).find(":selected").val();
+	     // alert(gouverneratId);
+	      var json = {
+	       "gouverneratId": gouverneratId
+	      };
+	     
+	       $.ajax({
+	       type : "POST",
+	       contentType : "application/json",
+	       url : "/loadCityByCountry",
+	       data : JSON.stringify(json),
+	       dataType : 'json',
+	       cache : false,
+	       timeout : 600000,
+	       success : function(data) {
+	        var html = '';
+	        var len = data.length;
+	        html += '<option value="0"></option>';
+	        for (var i = 0; i < len; i++) {
+	         html += '<option value="' + data[i].id_ville + '">'
+	           + data[i].nom
+	           + '</option>';
+	        }
+	        html += '</option>';
+	        $('#selectVille').html(html);
+	       },
+	       error : function(e) {
+	        alert(e);
+	       }
+	      });
+	    });
+	   });
+ $(document).ready(function() {
+	  
+	  var token = $("meta[name='_csrf']").attr("content");
+	  var header = $("meta[name='_csrf_header']").attr("content");
+	  $(document).ajaxSend(function(e, xhr, options) {
+	      xhr.setRequestHeader(header, token);
+	  });
+$("#gouverSielectMar").change(function() {
+ 	
+     var gouverneratId = $(this).find(":selected").val();
+     
+     var json = {
+      "gouverneratId": gouverneratId
+     };
+    
+      $.ajax({
+      type : "POST",
+      contentType : "application/json",
+      url : "/loadCityByCountry",
+      data : JSON.stringify(json),
+      dataType : 'json',
+      cache : false,
+      timeout : 600000,
+      success : function(data) {
+       var html = '';
+       var len = data.length;
+       html += '<option value="0"></option>';
+       for (var i = 0; i < len; i++) {
+        html += '<option value="' + data[i].id_ville + '">'
+          + data[i].nom
+          + '</option>';
+       }
+       html += '</option>';
+       $('#selectVilleMar').html(html);
+      },
+      error : function(e) {
+     //  alert(e);
+      }
+     });
+   });
+  });
+ </script>
+
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+ <div class="top-bar" th:insert="bar.html"></div>
+       <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">Rapid Livraison</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+               <li><a th:href="@{/Accueil}" class="nav-link">Acceuil</a></li>
+                  <li><a th:href="@{/Accueil#services-section}" class="nav-link">Services</a></li>
+                                    <li><a th:href="@{/}" class="nav-link">Expédier</a></li>
+               <li>
+                    <a  th:href="@{/commande}"  class="nav-link">Historique </a>
+                  </li>
+                  <li>
+                    <a  th:href="@{/suiviColis}"  class="nav-link">Suivi vos colis </a>
+                  </li>
+                   <li >
+                    <a  th:href="@{/modifierProfilMarchand}"  class="nav-link">Modifier votre profil</a>
+                  </li>
+                    <li sec:authorize="isAuthenticated()"><a class="glyphicon glyphicon-log-out" th:href="@{/logout}">Se déconnecter</a></li>
+
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+       
+
+      </header>
+       </div>
+         <div class="container">
+   <div class="text-center container" id="blog-section">
+     <div th:text="${message}"> </div>
+     
+<br/>
+       
+       <h3> <strong>Veuiller remplir ce formulaire </strong></h3>
+       	<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered
+						to our awesome app!</div>
+				</div>
+         <br/>
+<div class="panel panel-default">
+   
+      <div class="panel-body">
+           <form  th:object="${colis}" id="form-commande" method="post" th:action="@{/commande}">
+ 
+         <fieldset  id="field2" class="col-md-6">      
+          <legend> adresse de destinateur </legend>
+         
+          <div class="panel panel-default">
+            <div class="panel-body" id="panel-body">
+              <div class="form-group row">
+										<label for="inputAddressCli" class="control-label col-md-3">Adresse</label>
+										<input type="text" class="form-control col-md-9"
+											id="inputAddressCli" th:field="*{adresse_client}"
+											th:classappend="${#fields.hasErrors('adresse_client')}?'inval':''" />
+											
+											
+											
+										<label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('adresse_client')}"
+											th:errors="*{adresse_client}"> </label>
+
+
+									</div>
+									<div class="form-group row">
+										<label for="inputposte" class="control-label col-md-3">Code
+											postale</label> <input type="text" class="form-control col-md-9"
+											id="inputposte" th:field="*{code_Postale_client}"
+											th:classappend="${#fields.hasErrors('code_Postale_client')}?'inval':''" />
+										<label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('code_Postale_client')}"
+											th:errors="*{code_Postale_client}"> </label>
+
+									</div>
+									<div class="form-group row">
+										<label for="inputVille" class=" control-label col-md-3">Gouvernorat</label>
+										<select class="form-control col-md-9" id="gouverSielect"
+											th:field="*{gouvernerat_client}"
+											th:classappend="${#fields.hasErrors('gouvernerat_client')}?'inval':''">
+
+
+											<option selected value=""></option>
+											<option th:each="gouvernerat:${gouvernerats}"
+												id="gouverSelect" th:text="${gouvernerat.nom}"
+												th:value="${gouvernerat.id}"></option>
+
+										</select> <label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('gouvernerat_client')}"
+											th:errors="*{gouvernerat_client}"> </label>
+									</div>
+									<div class="form-group row">
+										<label for="inputVille" class=" control-label col-md-3">ville</label>
+										<select class="form-control col-md-9"
+											th:field="*{ville_client}" id="selectVille"
+											th:classappend="${#fields.hasErrors('ville_client')}?'inval':''">
+
+											<option selected value=""></option>
+											<option th:each="ville:${villes}" id="villeSelect"
+												th:text="${ville.nom}" th:value="${ville.id_ville}">
+											</option>
+
+										</select> <label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('ville_client')}"
+											th:errors="*{ville_client}"> </label>
+
+									</div>
+									<div class="form-group row" id="typeDes">
+										<label for="inputState1" class="col-md-3">Type de
+											destinataire</label> <select id="selectType"
+											class="form-control col-md-9" th:field="*{type_destination}"
+											onchange="change(this.value)"
+											th:classappend="${#fields.hasErrors('type_destination')}?'inval':''">
+
+											<option selected value=""></option>
+											<option th:value="physique">physique</option>
+											<option th:value="morale">morale</option>
+										</select> <label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('type_destination')}"
+											th:errors="*{type_destination}"> </label>
+
+									</div>
+									<div class="form-group row">
+
+										<label for="inputNumtel" class="control-label col-md-3">Numéro
+											de télephone de destinataire</label> <input type="text"
+											class="form-control col-md-9" id="inputNumtel"
+											th:field="*{numTel_client}"
+											th:classappend="${#fields.hasErrors('numTel_client')}?'inval':''">
+										<label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('numTel_client')}"
+											th:errors="*{numTel_client}"> </label>
+									</div>
+
+
+   </div>
+          </div>
+         
+        </fieldset>
+               
+           
+            <fieldset  id="field1" class="col-md-6">      
+          <legend> Adress de l'éxpéditeur</legend>
+         
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="form-group row">
+										<label for="inputAddress" class="control-label col-md-3">Adresse</label>
+										<input type="text" class="form-control col-md-9"
+											id="inputAddress" th:field="*{adresse_marchand}"
+											th:classappend="${#fields.hasErrors('adresse_marchand')}?'inval':''">
+
+										<label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('adresse_marchand')}"
+											th:errors="*{adresse_marchand}"> </label>
+									</div>
+									<div class="form-group row">
+										<label for="inputposte" class="control-label col-md-3">Code
+											postale</label> <input type="text" class="form-control col-md-9"
+											title="Le code postale doit contenir 4 chiffres"
+											 id="inputposte"
+											th:field="*{code_Postale_marchand}"
+											th:classappend="${#fields.hasErrors('code_Postale_marchand')}?'inval':''">
+										<label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('code_Postale_marchand')}"
+											th:errors="*{code_Postale_marchand}"> </label>
+											
+	
+											
+										
+											
+											
+											
+									</div>
+									<div class="form-group row">
+										<label for="inputVille" class=" control-label col-md-3">Gouvernorat</label>
+										<select class="form-control col-md-9" id="gouverSielectMar"
+											th:field="*{gouvernerat_marchand}"
+											th:classappend="${#fields.hasErrors('gouvernerat_marchand')}?'inval':''">
+
+											<option selected value=""></option>
+											<option th:each="gouvernerat:${gouvernerats}"
+												id="gouverSelect" th:text="${gouvernerat.nom}"
+												th:value="${gouvernerat.id}"></option>
+
+										</select> <label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('gouvernerat_marchand')}"
+											th:errors="*{gouvernerat_marchand}"> </label>
+									</div>
+									<div class="form-group row">
+										<label for="inputVille" class=" control-label col-md-3">ville</label>
+										<select class="form-control col-md-9"
+											th:field="*{ville_marchand}" id="selectVilleMar"
+											th:classappend="${#fields.hasErrors('ville_marchand')}?'inval':''">
+
+											<option selected value=""></option>
+											<option th:each="ville:${villes}" id="villeSelect"
+												th:text="${ville.nom}" th:value="${ville.id_ville}">
+											</option>
+										</select> <label class=" col-md-10" style="color: red;"
+											th:if="${#fields.hasErrors('ville_marchand')}"
+											th:errors="*{ville_marchand}"> </label>
+
+									</div>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset  id="field2" class="col-md-6">      
+          <legend> Information de marchandises </legend>
+         
+          <div class="panel panel-default">
+            <div class="panel-body" id="panel-body3">
+   
+       <div class="form-group row">
+      <label for="inputposte" class="col-md-3">Poids en Kg</label>
+      <input type="text" class="form-control col-md-9" id="inputposte" th:field="*{poids}" >
+    </div>
+    
+   <div class="form-group row" id="NatureMarch">
+      <label for="inputState" class="col-md-3" >Nature de marchandise</label>
+      <select id="selectAutre" class="form-control col-md-9"  th:field="*{desc_Colis}" onchange="changeMarc(this.value)">
+      <option  value=" " selected></option>  
+        <option  th:value="Marchandise">Marcahndises</option>
+                  <option  th:value="Documents"> Documents</option>
+                       <option th:value="Meubles"  >Meubles</option>
+                        <option  th:value="Autre">Autres </option>
+       
+     </select>
+   
+    </div>
+    
+    <input type="hidden" id="nomhi" th:field="*{nom_client}" /> <input
+										type="hidden" id="prenhi" th:field="*{prenom_client}" /> <input
+										type="hidden" id="morlhi" th:field="*{raison_sociale}" />
+										 <input
+										type="hidden" id="autreMar" th:field="*{desc_Colis}" />
+    
+            </div>
+         </div>
+         
+        </fieldset>
+
+     
+        <button type="submit" class="btn btn-warning submitForm">Envoyer </button>
+         </form>
+         
+    </div>
+
+    </div>
+
+     
+     </div>
+     </div> 
+    <div class="container">
+    <div class="text-center container" id="blog-section">
+
+                 <!-- /.box-header -->
+                
+               
+
+                    <div class="table-responsive ">
+                        <table class="table table-bordered table-hover" >
+                            <thead>
+                           
+<tr id="en_tete" >
+<th rowspan="2"></th>
+<th   rowspan="2"> <a class="sorted">Date commande</th>
+<th  class="fx" rowspan="2"><a class="sorted" >Etat de commande</th>
+<th colspan="7"  > <a class="sorted" >Information de l'expéditeur</th>
+<th colspan="8"> <a class="sorted" > Information de destinataire</th>
+<th colspan="2"> <a class="sorted">Information de marchandises</th>
+</tr>
+<tr >
+<th> <a class="fa fa-fw fa-sort"><a class="sorted" >Adresse</th>
+<th> <a class="fa fa-fw fa-sort"><a class="sorted" >ville</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >Gouvernerat</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >nom</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted">prénom</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >Num de téléphone</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >code postale</th>
+
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >Adresse</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >ville</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >Gouvernerat</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >nom</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >prénom</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >Raison sociale</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >Num de téléphone</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >code postale</th>
+
+
+<th><a class="fa fa-fw fa-sort"><a class="sorted" >poids</th>
+<th><a class="fa fa-fw fa-sort"><a class="sorted">nature</th>
+
+                            </tr>
+
+                            </thead>
+                 
+                            <tbody>
+                             
+           <tr th:each="demande,stat: ${demandes}"  th:id="${stat.index}" class="ligne" onclick="cliquable(this)">
+          <td><input type="checkbox"  th:class="${stat.index}"/></td>
+             <td th:text="${demande.date_com}"></td>
+                              <td  th:text="${demande.nomEtat}">
+                             
+                              </td>
+                               <td th:text="${demande.adresse_marchand}"></td>
+                                 <td th:text="${demande.nomVilleM}"></td>
+                                 <td th:text="${demande.nomGouverneratM}"></td>
+                                 <td th:text="${demande.nom}"></td>
+                                 <td th:text="${demande.prenom}"></td>
+                                  <td th:text="${demande.tel}"></td>
+                                   <td th:text="${demande.code_Postale_marchand}"></td>
+                                   
+                                    <td th:text="${demande.adresse_client}"></td>  
+                                      <td th:text="${demande.nomVilleC}"></td>                      
+                                     <td th:text="${demande.nomGouverneratC}"></td>
+                             
+                                <td th:text="${demande.nom_client}"></td>
+                                 <td th:text="${demande.prenom_client}"></td>
+                                  <td th:text="${demande.raison_sociale}"></td>
+                                   <td th:text="${demande.numTel_client}"></td>
+                                     <td th:text="${demande.code_Postale_client}"></td>
+                                      <td th:text="${demande.poids}"></td>
+                                       <td th:text="${demande.desc_Colis}"></td>
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+           
+                               
+                          </tr>
+                          </tbody>
+                          </table>
+                     
+                          </div>
+
+
+ 
+
+
+</div>
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/jquery.sticky.js"></script>
+      <script src="js/jquery.waypoints.min.js"></script>
+      <script src="js/jquery.animateNumber.min.js"></script>
+      <script src="js/jquery.fancybox.min.js"></script>
+      <script src="js/jquery.easing.1.3.js"></script>
+      <script src="js/aos.js"></script>
+
+      <script src="js/main.js"></script>
+</body>
+
+</html> 
+
+  </body>
+
+</html>
+

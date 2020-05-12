@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html"><meta charset="utf-8" />
+</head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar" th:insert="bar.html">
+    
+      </div>
+       <header class="site-navbar js-sticky-header site-navbar-target" role="banner" th:insert="Header.html">
+
+       
+
+      </header>
+       <div class="block__73694 site-section border-top" id="Accueil-section">
+        <div class="container">
+          <div class="row d-flex no-gutters align-items-stretch">
+
+            <div class="col-12 col-lg-6 block__73422 order-lg-2" style="background-image: url('images/livraison.jpg');" data-aos="fade-left" data-aos-delay="">
+            </div>
+
+
+
+            <div class="col-lg-4 mr-auto p-lg-0 mt-4 mt-lg-0 order-lg-1" data-aos="fade-right" data-aos-delay="">
+              <h2 class="mb-4 text-black">Rapid Livraison</h2>
+              <h4 class="text-primary">NOUS TRAVAILLONS RAPIDEMENT ET EFFICACEMENT!</h4>
+              <p>   Rapid Livraison est une service offert aux entreprises ,il vous permet de distribuer vos envois urgents en tunisie dans des délais réduits avec la possibilté d'obtenir à tous moments</p>
+              <p>  Le back office Rapid transport offre aux responsables logistique l'ensemble des fonctionnalités nécessaires pour optimiser touts les etapes de la distribution d'un colis</p>
+
+              <ul class="ul-check primary list-unstyled mt-5">
+                <li>Livraison express</li>
+                <li>Service sécurisé </li>
+                <li>suivi l'etat de vos colis</li>
+                <li>Demande d'enlévement et de livraison en temps réel </li>
+              </ul>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="site-section bg-light" id="services-section">
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <div class="col-md-7 text-center">
+              <div class="block-heading-1">
+                <h2>Ce que nous offrons</h2>
+              </div>
+            </div>
+          </div>
+          <div class="owl-carousel owl-all">
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <span class="flaticon-box"></span>
+              </div>
+              <h3 class="mb-3">Transfert de colis</h3>
+              <p>sur Rapid Livraison vous pouvez suivre l'etat votre colis </p>
+            </div>
+
+             <div class="block__35630">
+              <div class="icon mb-0">
+                <span class="flaticon-add"></span>
+              </div>
+              <h3 class="mb-3">Distribution de colis</h3>
+              <p>livrer les colis dans des camions avec des chauffeurs </p>
+            </div>
+
+            <div class="block__35630">
+              <div class="icon mb-0">
+                <span class="flaticon-warehouse"></span>
+              </div>
+              <h3 class="mb-3">Entrepôt</h3>
+              <p>Triéz et divisez les colis par adresse de client </p>
+  
+            </div>
+
+         
+      <div class="block__35630">
+              <div class="icon mb-0">
+                <span class="flaticon-lorry"></span>
+              </div>
+              <h3 class="mb-3">camionnage</h3>
+              <p> Le dispatcheur répartiteur transport routier de marchandises organise et programme les plans de tournées des conducteurs
+ </b> Le dispatcheur répartiteur transport routier de marchandises définit et met à jour le planning quotidien des conducteurs routiers  </p>
+       
+            </div>
+          </div>
+        </div>
+      </div>
+         </div>
+        
+            </div>
+          </div>
+        </div>
+ </div>
+   
+    <div th:insert="script.html"></div>
+  </body>
+
+</html>

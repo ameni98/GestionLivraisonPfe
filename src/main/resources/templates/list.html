@@ -1,0 +1,322 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<head>
+    <title>commande</title>
+    <meta charset="UTF-8"></meta>
+    <!-- appel au fichier form.js -->
+    <script type="text/javascript" src="js/form.js" th:src="@{js/form.js}">
+    </script>
+    <style>
+th {
+  text-align: center;
+  /*vertical-align: center;
+ /* display:inline-block;*/
+vertical-align:middle;
+border-color:black;*/
+  
+ 
+}
+.eBtn{display:none;}
+
+.table-bordered>thead>tr>th{
+    border-right-width: 5px;
+     border-left-width: 5px;
+        border-top-width: 5px;
+       /*    border-bottom-width: 5px;*/}
+/* pour le scroll*/
+table{
+   display: block;
+    overflow-x: auto;
+    white-space: nowrap; 
+    border:1;} 
+    thead:nth-child(1):nth-child(3){
+    border-right-width: 5px;
+     border-left-width: 5px;
+    
+    }
+  /*  #bac{background-color: #f2f2f2;
+    
+    }*/
+    </style>
+   
+    
+ 
+
+  
+  
+    
+</head>
+<body>
+<div layout:fragment="breadcrumb">
+    <h1 >Liste des commandes</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> admin</a></li>
+        <li class="active">List des commandes </li>
+    </ol>
+</div>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                   <button class="box-title btn btn-primary eBtn" id="btnDis"  disabled >Modifier etat</button>
+  <script type="text/javascript" >
+  var s=0;
+  var d=0;
+  var array=[];
+  function cliquable(e)
+  {	 //var elem=	document.getElementById('btnDis');
+ //console.log(elem);
+      //var id=e.getAttribute("id");
+      
+  var id=e.childNodes[1];
+var id2=  id.childNodes[0];
+var valeurId=id2.value;
+array.push(valeurId);
+
+  
+  console.log(id2.value);
+      // et aprés son input de type checkbox
+//la variable e est la ligne auquelle on clique et e.childNodes récupére l'enfant <td id="poid">..</td> qui d'ordre 37 et apres sa valeur
+//avec textContent
+  var poid=e.childNodes[37];
+  var textPoid = poid.textContent;
+  console.log(poid);
+   //faire la conversion des tring à int 
+  var poids = parseInt(textPoid, 10);
+
+//récupération de l'input checkbox de lélément enfant <td>qui est à son tour l'élémnet enfant de l'élément <tr> qui est la variable e
+//cliquable
+     var inputChecked= e.firstElementChild.firstElementChild;
+//si cet élément est cocher alors la décocher et soustraire la valeur de poids de la somme s et on décrémente le nombre 
+//de l'élément coché
+     if(inputChecked.checked==true )
+        
+     {
+    	inputChecked.checked=false;
+    	inputChecked.setAttribute("checked", false);
+    	s=s-poids;
+    	 d--;
+    
+    	 
+     }
+     //sinon : on coche l'élément , on active l'état de bouton  modifier Etat,on ajoute le poid à la somme s et incréménte 
+     //le nombre de l'élément coché
+     else{
+    	 inputChecked.checked=true;
+    	 inputChecked.setAttribute("checked", true);
+    	// var elem=	document.getElementById('btnDis');
+    	//alert(elem);
+    	document.getElementById('btnDis').disabled=false;
+    	//.disable=false;
+    	s=s+poids;
+    	d++;
+    
+    	// array.push(poids);
+ 	 
+    	 
+     }
+     console.log("le nombre est "+d);
+     //si le nombre de l'élément coché est égale à zéro alors on désactive le bouton modifier etat 
+ 	if(d==0)
+ 		{document.getElementById('btnDis').disabled=true;
+ 		
+ 		}
+	   document.getElementById("poid").textContent=s;
+	   document.getElementById("ids").value=array;
+           
+     } 
+
+/* var s= cliquable();
+ var array=[];
+ array.push(s);*/
+ </script>
+               <div class="box-tools">
+                        <form th:action="@{/demande/list}" method="get">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <input type="text" name="value" class="form-control pull-right"
+                                       placeholder="Rechercher par nom" th:if="${key} == null"/>
+                                <input type="text" name="value" class="form-control pull-right"
+                                       placeholder="Pencarian Berdasarkan Nama" th:if="${key} != null"
+                                       th:value="${key}"/>
+                                       <input type="text" name="value" class="form-control pull-right"
+                                       placeholder="Pencarian Berdasarkan Nama" th:if="${key} != null"
+                                       th:value="${key}"/>
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+<br/>
+
+                <!-- /.box-header -->
+                <div class="box-body">
+                <span>Vous pouvez afficher la liste des commandes par ville :</span>
+                <select>
+                <option> de Grand Tunis</option>
+                  <option> hors Grand Tunis</option>
+                </select>
+<br/><br/>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover" >
+                            <thead> 
+                           
+									<tr id="en_tete" >
+									<th rowspan="2"></th>
+										<th   rowspan="2"> <a class="sorted">Date commande</th>
+										<th  class="fx" rowspan="2"><a class="sorted" >Etat de commande</th>
+										<th colspan="7"  > <a class="sorted" >Information de l'expéditeur</th>
+										<th colspan="8"> <a class="sorted" > Information de destinataire</th>
+										<th colspan="2"> <a class="sorted">Information de marchandises</th>
+									</tr>
+									<tr >
+										<th> <a class="fa fa-fw fa-sort"><a class="sorted" >Adresse</th>
+										<th> <a class="fa fa-fw fa-sort"><a class="sorted" >ville</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >Gouvernerat</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >nom</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">prénom</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >Num de téléphone</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >code postale</th>
+
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >Adresse</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >ville</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >Gouvernerat</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >nom</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >prénom</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >Raison sociale</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >Num de téléphone</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >code postale</th>
+
+
+										<th><a class="fa fa-fw fa-sort"><a class="sorted" >poids</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">nature</th>
+
+                            </tr>
+
+                            </thead>
+                 
+                            <tbody>
+                             
+           <tr th:each="demande,stat: ${demandes}"  th:id="${stat.index}" class="ligne" onclick="cliquable(this)">
+          <td><input type="checkbox"   th:value="${demande.idCom}"  id="idcomm"class="checkede"/></td>
+             <td th:text="${demande.date_com}"></td>
+                              <td  th:text="${demande.nomEtat}">
+                              
+                              </td>
+                               <td th:text="${demande.adresse_marchand}"></td>
+                                 <td th:text="${demande.nomVilleM}"></td>
+                                 <td th:text="${demande.nomGouverneratM}"></td>
+                                 <td th:text="${demande.nom}"></td>
+                                 <td th:text="${demande.prenom}"></td>
+                                  <td th:text="${demande.tel}"></td>
+                                   <td th:text="${demande.code_Postale_marchand}"></td>
+                                   
+                                    <td th:text="${demande.adresse_client}"></td>   
+                                      <td th:text="${demande.nomVilleC}"></td>                      
+                                     <td th:text="${demande.nomGouverneratC}"></td>
+                             
+                                <td th:text="${demande.nom_client}"></td>
+                                 <td th:text="${demande.prenom_client}"></td>
+                                  <td th:text="${demande.raison_sociale}"></td>
+                                   <td th:text="${demande.numTel_client}"></td>
+                                     <td th:text="${demande.code_Postale_client}"></td>
+                                      <td th:text="${demande.poids}" id="poids"></td>
+                                       <td th:text="${demande.desc_Colis}"></td>
+                                 
+                                 
+                                 
+                                 
+                               
+           
+                               
+                          </tr>
+                          </tbody>
+                          </table>
+                          </div>
+                          </div>
+                         
+                      
+                           
+   
+            </div>
+        </div>
+    </div>
+    <div class="MyForm">
+      <form th:object="${affectCommande}"  method="post" th:action="@{/list}">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Affectation commande</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <img src="img/commandeAffec.jpg" />
+      <div class="modal-body">
+      <p>Vous voulez vraiment passer à l'état suivante pré à expédier ? Si oui veillez choisir le chauffeur et le véhicule</p>
+        <div class="form-group">
+          <label for="chauffeur-name" class="col-form-label">le poids des commandes:</label>
+          <div id="poid"></div>
+       
+          <label for="chauffeur-name" class="col-form-label">Chauffeur:</label>
+          <div class="form-group row">
+           <div class="col-xs-11">
+      <select  class="form-control 	" th:field="*{idChauffeur}">
+      <option th:each="chauffeur: ${chauffeurs}" th:text="${chauffeur.nom} +' ' + ${chauffeur.prenom}" th:value="${chauffeur.id}"
+      
+      
+      > </option>
+      </select>
+      </div>
+  
+      <img src="img/Chauff3.JPG"  />
+     </div>
+
+      </div>
+      <div class="form-group" >
+          <label for="véhicule-name" class="col-form-label">Véhicules:</label>
+            <div class="form-group row">
+           <div class="col-xs-11">
+      <select class=form-control  th:field="*{idVehicule}" >
+      
+      <option  th:each="vehicule: ${vehicules}" th:text="${vehicule.matricule} +' , '+${vehicule.capacite}" th:value="${vehicule.id}"
+     ></option>
+      
+      </select>
+      </div>
+      <img src="img/cam2.JPG"  />
+     </div>
+
+  
+      </div>
+       <div class="form-group" >
+          <label for="véhicule-name" class="col-form-label">Date de départ:</label>
+          <div class="form-group row">
+           <div class="col-xs-11">
+           <input type="date" class="form-control" 
+      th:field="*{date_departColis}"/>
+      </div>
+       <img src="img/cal.png"  />
+     </div>
+   <input type="hidden" id='ids'  th:field="*{idCommande}" />
+      </div>
+      
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </div>
+      
+    </div>
+   
+  </div>
+  
+</div>
+</form>
+  </div>  
+</div>
+</body>
+</html>

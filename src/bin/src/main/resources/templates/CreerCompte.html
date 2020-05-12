@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8" />
+
+  <head>
+    <title>Livraison &mdash;</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+ <link rel="stylesheet" type="text/css" href="css/interface.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css"> 
+   
+    </style>
+
+  </head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed"
+data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span> <span
+class="icon-bar"></span> <span class="icon-bar"></span> <span
+class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="#" th:href="@{/}">Registration and
+Login Module</a>
+</div>
+</div>
+</nav>
+
+<br>
+<br>
+
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+
+<div th:if="${param.success}">
+<div class="alert alert-info">You've successfully registered
+to our awesome app!</div>
+</div>
+
+<h1>Registration</h1>
+<form th:action="@{/registration}" th:object="${marchand}" method="post">
+
+<p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
+error</p>
+
+<div class="form-group"
+th:classappend="${#fields.hasErrors('nom')}? 'has-error':''">
+<label for="nom" class="control-label">Nom</label> <input
+id="nom" class="form-control" th:field="*{nom}" />
+<p class="error-message"
+th:each="error: ${#fields.errors('Nom')}"
+th:text="${error}">Validation error</p>
+</div>
+<div class="form-group"
+th:classappend="${#fields.hasErrors('prenom')}? 'has-error':''">
+<label for="prenom" class="control-label">prenom</label> <input
+id="prenom" class="form-control" th:field="*{prenom}" />
+<p class="error-message"
+th:each="error : ${#fields.errors('prenom')}"
+th:text="${error}">Validation error</p>
+</div>
+<div class="form-group"
+th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+<label for="email" class="control-label">E-mail</label> <input
+id="email" class="form-control" th:field="*{email}" />
+<p class="error-message"
+th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
+error</p>
+</div>
+<div class="form-group"
+th:classappend="${#fields.hasErrors('nomUtilisateur')}? 'has-error':''">
+<label for="nomUtilisateur" class="control-label">nomUtilisateur</label> <input
+id="nomUtilisateur" class="form-control" th:field="*{nomUtilisateur}" />
+<p class="error-message"
+th:each="error: ${#fields.errors('nomUtilisateur')}"
+th:text="${error}">Validation error</p>
+</div>
+<div class="form-group"
+th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+<label for="password" class="control-label">Password</label> <input
+id="password" class="form-control" type="password"
+th:field="*{password}" />
+<p class="error-message"
+th:each="error : ${#fields.errors('password')}"
+th:text="${error}">Validation error</p>
+</div>
+<div class="form-group"
+th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+<label for="confirmPassword" class="control-label">Confirm
+password</label> <input id="confirmPassword" class="form-control"
+type="password" th:field="*{confirmPassword}" />
+<p class="error-message"
+th:each="error : ${#fields.errors('confirmPassword')}"
+th:text="${error}">Validation error</p>
+</div>
+
+<div class="form-group"
+th:classappend="${#fields.hasErrors('CodePostale')}? 'has-error':''">
+<label for="CodePostale" class="control-label">code postale</label> <input id="CodePostale" class="form-control"
+type="text" th:field="*{CodePostale}" />
+<p class="error-message"
+th:each="error : ${#fields.errors('CodePostale')}"
+th:text="${error}">Validation error</p>
+</div>
+<div class="form-group"
+th:classappend="${#fields.hasErrors('adresse')}? 'has-error':''">
+<label for="adresse" class="control-label">adresse</label> <input
+id="adresse" class="form-control" th:field="*{adresse}" />
+<p class="error-message"
+th:each="error: ${#fields.errors('adresse')}"
+th:text="${error}">Validation error</p>
+</div>
+
+<div class="form-group"
+th:classappend="${#fields.hasErrors('NumTel')}? 'has-error':''">
+<label for="NumTel" class="control-label">NumTel</label> <input
+id="NumTel" class="form-control" th:field="*{NumTel}" />
+<p class="error-message"
+th:each="error: ${#fields.errors('NumTel')}"
+th:text="${error}">Validation error</p>
+</div>
+<div class="form-group"
+th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
+<input id="terms" type="checkbox" th:field="*{terms}" />   <label
+class="control-label" for="terms"> I agree with the <a
+href="#">terms and conditions</a> for Registration.
+</label>
+<p class="error-message"
+th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation
+error</p>
+</div>
+
+<div class="form-group">
+<button type="submit" class="btn btn-success">Register</button>
+<span>Already registered? <a href="/" th:href="@{/login}">Login
+here</a></span>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+
+<script type="text/javascript"
+th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript"
+th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>
