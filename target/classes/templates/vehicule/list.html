@@ -1,145 +1,160 @@
-<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<!--/*en utilisant tyhmleaf templating engine chaque jeton sera remplacé par leurs titres respectifs dans la page résultante */-->
+<!-- appel à la layout.html -->
+<!--layout decorate spécifie le modèle de mise en page à décorer avec le modèle de contenu actuel-->
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
 <head>
-    <title>véhicule</title>
-    <meta charset="UTF-8"></meta>
+<title>véhicule</title>
+<meta charset="UTF-8"></meta>
 
 <!-- bibliotheque pour toaster  -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
- <!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" />-->   
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/css/style1.css" rel="stylesheet" />
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-     <script th:src="@{/js/toasterSript.js}" type="text/javascript"></script>	
-<script th:inline="javascript"  >
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+	rel="stylesheet" />
+<!--  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" />-->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css"
+	rel="stylesheet" />
+<link href="/css/style1.css" rel="stylesheet" />
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script th:src="@{/js/toasterSript.js}" type="text/javascript"></script>
+<script th:inline="javascript">
 var message =[[${message}]];
 </script>
 </head>
 <body id="aff">
-	
 
+	<!-- appel au fragment breadcrumb qui correspond au header de la page -->
 	<div layout:fragment="breadcrumb">
-    <h1 >Liste des v&eacutehicules</h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> admin</a></li>
-        <li class="active">List des v&eacute;hicules</li>
-    </ol>
-</div>
-<div layout:fragment="content">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-primary">
-                <div class="box-header with-border">      
-                    <a class="box-title btn btn-primary" th:href="@{/vehicule/form}">Ajouter véhicule </a>
+		<h1>Liste des v&eacutehicules</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> admin</a></li>
+			<li class="active">List des v&eacute;hicules</li>
+		</ol>
+	</div>
+	<!-- appel au fragment content qui correspond au contenu de la page -->
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<a class="box-title btn btn-primary" th:href="@{/vehicule/form}">Ajouter
+							véhicule </a>
 
 
-                    <div class="box-tools">
-                    <!-- ici c'est un petit formulaire pour l'input de recherche   -->
-                        <form th:action="@{/vehicule/list}" method="get">
-                            <div class="input-group input-group-sm" style="width: 250px;">
-                            <!-- ici c'est l'input de la recherche   -->
-                               <!--si la valeur est null on affiche cet input avec ses classes -->
-                                <input type="text" name="value" class="form-control pull-right"
-                                       placeholder="Rechercher par matricule"  th:value="${valeur}" />
-                                       <!--sinon on affiche l'input avec th:value -->
-                             
-                                <div class="input-group-btn">
-                                <!-- ici la bouton submit avec l'icon rechercher -->
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+						<div class="box-tools">
+							<!-- ici c'est un petit formulaire pour l'input de recherche   -->
+							<form th:action="@{/vehicule/list}" method="get">
+								<div class="input-group input-group-sm" style="width: 250px;">
+									<!-- ici c'est l'input de la recherche   -->
+									<!--si la valeur est null on affiche cet input avec ses classes -->
+									<input type="text" name="value" class="form-control pull-right"
+										placeholder="Rechercher par matricule" th:value="${valeur}" />
+									<!--sinon on affiche l'input avec th:value -->
+
+									<div class="input-group-btn">
+										<!-- ici la bouton submit avec l'icon rechercher -->
+										<button type="submit" class="btn btn-default">
+											<i class="fa fa-search"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
 
 
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <span sd:page-size-selector="javascript"></span> 
+					<!-- /.box-header -->
+					<div class="box-body">
+						<span sd:page-size-selector="javascript"></span>
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th> Id</th>
-                                <!-- fa fa sort class pour montrer l'icon de trie -->
-                                <th><a class="fa fa-fw fa-sort"><a class="sorted" sd:pagination-sort="matricule">Matricule</th>
-                                <th><a class="fa fa-fw fa-sort"><a class="sorted" sd:pagination-sort="véhicule">Disponinbilité
-                                </th>
-                                 <th><a class="fa fa-fw fa-sort"><a class="sorted" sd:pagination-sort="Marque">Marque</th>
-                                 <th><a class="fa fa-fw fa-sort"><a class="sorted" sd:pagination-sort="Capacité">capacit&egrave
-                                </th>
-                                <th>&nbsp;</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                          <!--ici on fait le parcours de la liste de véhicules -->   
-                            
-                            <tr th:each="vehicule: ${vehicules}">
-                             <td th:text="${vehicule.id}"></td>
-                              <td th:text="${vehicule.matricule}"></td>
-                               <td th:text="${vehicule.dispo}"></td>
-                                <td th:text="${vehicule.marque}"></td>
-                                <td th:text="${vehicule.capacite}"></td>
-                                  
-                                
-                                <td>
-                                
-                        <!-- ici pour afficher l'icon de modifier avec  la classe glyphicon glyphicon-edit 
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover">
+								<!--affichage de l'entete de tableau -->
+								<thead>
+									<tr>
+										
+										<!-- fa fa sort class pour montrer l'icon de trie -->
+										<th><a class="fa fa-fw fa-sort"><a class="sorted"
+												sd:pagination-sort="matricule">Matricule</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted"
+												sd:pagination-sort="véhicule">Disponinbilité </th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted"
+												sd:pagination-sort="Marque">Marque</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted"
+												sd:pagination-sort="Capacité">capacit&egrave </th>
+										<th>&nbsp;</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--ici on fait le parcours de la liste de véhicules -->
+
+									<tr th:each="vehicule: ${vehicules}">
+										
+										<td th:text="${vehicule.matricule}"></td>
+										<td th:text="${vehicule.dispo}"></td>
+										<td th:text="${vehicule.marque}"></td>
+										<td th:text="${vehicule.capacite}"></td>
+
+
+										<td>
+											<!-- ici pour afficher l'icon de modifier avec  la classe glyphicon glyphicon-edit 
                         qui nous raméne à la page /vehicule/form toute en passant l'id de véhicule à modifier 
-                        au niveau de l'url  -->
-                        
-                                    <a href="#" class="btn btn-default" th:href="@{/vehicule/form(id=${vehicule.id})}"
-                                       title="Edit Data"><span class="glyphicon glyphicon-edit"></span></a>
-                                       
-                             <!-- ici pour afficher l'icon de supprimer avec  la classe glyphicon glyphicon-trash 
-                        qui nous raméne à la page /vehicule/delete toute en passant l'id de véhicule à supprimer
-                        au niveau de l'url  -->  
-                         
-                                    <a href="#" class="btn btn-default" th:href="@{/vehicule/delete(id=${vehicule.id})}"
-                                       title="Delete Data"><span class="glyphicon glyphicon-trash"></span></a>
-                                </td>
-                            </tr>
-                            <!-- si le contenue de la liste est vide on affiche ce message -->
-                              <tr th:if="${#lists.isEmpty(vehicules.content)}">
-                                <td colspan="13" class="text-center">Pas de Données trouvées </td>
-                            </tr>
-                            </tbody>
-                            </table>
-                            </div>
-                            </div>
-                            
-                            
-                              <!-- si le contenue de la liste n'est pas vide on affiche la pagination -->
-                            <div th:if="${not #lists.isEmpty(vehicules.content)}">
-                            <!-- affichage d'indication par exemple affichage de 5 sur 10 -->
-                    <div sd:pagination-summary="">info</div>
-                    <div class="text-center">
-                        <nav>
-                        <!-- pour affichage de pagination -->
-                            <ul class="pagination" sd:pagination="full">
-                                <!-- c'est une Pagination creé par SpringDataDialect,ce contenu est juste pour le modele -->
-                                <li class="disabled"><a href="#" aria-label="Previous"><span
-                                        aria-hidden="true">&laquo;</span></a></li>
-                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                            
-                            
-                            
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-     
-                
+                        au niveau de l'url  --> <a href="#"
+											class="btn btn-default"
+											th:href="@{/vehicule/form(id=${vehicule.id})}"
+											title="Edit Data"><span class="glyphicon glyphicon-edit"></span></a>
 
-               </body>
+											<!-- ici pour afficher l'icon de supprimer avec  la classe glyphicon glyphicon-trash 
+                        qui nous raméne à la page /vehicule/delete toute en passant l'id de véhicule à supprimer
+                        au niveau de l'url  --> <a href="#"
+											class="btn btn-default"
+											th:href="@{/vehicule/delete(id=${vehicule.id})}"
+											title="Delete Data"><span
+												class="glyphicon glyphicon-trash"></span></a>
+										</td>
+									</tr>
+									<!-- si le contenue de la liste est vide on affiche ce message -->
+									<tr th:if="${#lists.isEmpty(vehicules.content)}">
+										<td colspan="13" class="text-center">Pas de Données
+											trouvées</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+					<!-- si le contenue de la liste n'est pas vide on affiche la pagination -->
+					<div th:if="${not #lists.isEmpty(vehicules.content)}">
+						<!-- affichage d'indication par exemple affichage de 5 sur 10 -->
+						<div sd:pagination-summary="">info</div>
+						<div class="text-center">
+							<nav>
+								<!-- pour affichage de pagination -->
+								<ul class="pagination" sd:pagination="full">
+									<!-- c'est une Pagination creé par SpringDataDialect,ce contenu est juste pour le modele -->
+									<li class="disabled"><a href="#" aria-label="Previous"><span
+											aria-hidden="true">&laquo;</span></a></li>
+									<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
 </html>
-        
-      
- 
+
+
+
 

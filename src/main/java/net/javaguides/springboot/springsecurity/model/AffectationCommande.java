@@ -1,90 +1,111 @@
 package net.javaguides.springboot.springsecurity.model;
 
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "AffectationCommande")
 public class AffectationCommande {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name = "id_affectCommande", nullable = false)
-private int id_affectCommande;
-public String getDate_departColis() {
-return date_departColis;
-}
-public void setDate_departColis(String date_departColis) {
-this.date_departColis = date_departColis;
-}
-@Column(name = "date_departColis")
-private String date_departColis;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_affectCommande", nullable = false)
+	private int id_affectCommande;
 
-//mapping chauffeur affectationCommande
-@ManyToOne
-@JoinColumn(name="id")
-private Chauffeur chauffeurC;
-public int getId_affectCommande() {
-return id_affectCommande;
-}
-public void setId_affectCommande(int id_affectCommande) {
-this.id_affectCommande = id_affectCommande;
-}
-//mapping vehicule affectationCommande
-@ManyToOne
-@JoinColumn(name="id_véhicule")
-private Vehicule VehiculeV;
-//mapping commande affectationCommande
-@ManyToOne
-@JoinColumn(name="id_commande")
-private Commande CommandeC;
-public Chauffeur getChauffeurC() {
-return chauffeurC;
-}
-public void setChauffeurC(Chauffeur chauffeurC) {
-this.chauffeurC = chauffeurC;
-}
-public Vehicule getVehiculeV() {
-return VehiculeV;
-}
-public void setVehiculeV(Vehicule vehiculeV) {
-VehiculeV = vehiculeV;
-}
-public Commande getCommandeC() {
-return CommandeC;
-}
-public void setCommandeC(Commande commandeC) {
-CommandeC = commandeC;
-}
-public Admin getAdminA() {
-return adminA;
-}
-public void setAdminA(Admin adminA) {
-this.adminA = adminA;
-}
-//mapping admin affectationCommande
-@ManyToOne
-@JoinColumn(name="id_admin")
-private Admin adminA;
-//mapping affectCommande et affectCommEtat
-@OneToMany(mappedBy="affectationCommandeC")
-private Set<AffectationCommandeEtat>AffectComm =new HashSet<AffectationCommandeEtat>();
-@Transient
-public Set<AffectationCommandeEtat> getAffectComm() {
-	return AffectComm;
-}
+	@Column(name = "date_departColis")
+	private String date_departColis;
+
+    //mapping chauffeur affectationCommande
+	@ManyToOne
+	@JoinColumn(name = "id")
+	private Chauffeur chauffeurC;
+	
+	private String date_affect;
+	
+	//mapping admin affectationCommande
+	@ManyToOne
+	@JoinColumn(name = "id_admin")
+	private Admin adminA;
+/*
+	//mapping affectCommande et affectCommEtat
+	@OneToMany(mappedBy = "affectationCommandeC")
+	private Set<AffectationCommandeEtat> AffectComm = new HashSet<AffectationCommandeEtat>();
+*/
+	//mapping vehicule affectationCommande
+	@ManyToOne
+	@JoinColumn(name = "id_véhicule")
+	private Vehicule VehiculeV;
+
+	//mapping commande affectationCommande
+	@ManyToOne
+	@JoinColumn(name = "id_commande")
+	private Commande CommandeC;
+
+    //getters et setters
+	public int getId_affectCommande() {
+		return id_affectCommande;
+	}
+
+	public void setId_affectCommande(int id_affectCommande) {
+		this.id_affectCommande = id_affectCommande;
+	}
+
+	public Chauffeur getChauffeurC() {
+		return chauffeurC;
+	}
+
+	public void setChauffeurC(Chauffeur chauffeurC) {
+		this.chauffeurC = chauffeurC;
+	}
+
+	public Vehicule getVehiculeV() {
+		return VehiculeV;
+	}
+
+	public void setVehiculeV(Vehicule vehiculeV) {
+		VehiculeV = vehiculeV;
+	}
+
+	public Commande getCommandeC() {
+		return CommandeC;
+	}
+
+	public void setCommandeC(Commande commandeC) {
+		CommandeC = commandeC;
+	}
+
+	public Admin getAdminA() {
+		return adminA;
+	}
+
+	public void setAdminA(Admin adminA) {
+		this.adminA = adminA;
+	}
+
+	/*@Transient
+	public Set<AffectationCommandeEtat> getAffectComm() {
+		return AffectComm;
+	}
+   */
+	public String getDate_departColis() {
+		return date_departColis;
+	}
+
+	public void setDate_departColis(String date_departColis) {
+		this.date_departColis = date_departColis;
+	}
+	public String getDate_affect() {
+		return date_affect;
+	}
+
+	public void setDate_affect(String date_affect) {
+		this.date_affect = date_affect;
+	}
 
 }

@@ -13,12 +13,16 @@ import net.javaguides.springboot.springsecurity.model.Vehicule;
 
 @Repository
 public interface VéhiculeRepository extends  PagingAndSortingRepository<Vehicule,Long> {
+	
+	//requete pour afficher les véhicules disponibles
 	 @Query(value="SELECT * FROM véhicule v WHERE v.dispo='Disponible'", 
 			 nativeQuery = true )
 	 List<Vehicule>vehiculeDispo();
 	
-	 
+	 //méthode pour rechercher vehicule par matricule
 	 Page<Vehicule>findByMatriculeContainingIgnoreCase(String maricule, Pageable pageable);
 	
-	 
+	 //tableau de board
+	 @Query(value=" SELECT count(*)  as nbre FROM véhicule",nativeQuery = true)
+		int findNumberVehi(); 
 }

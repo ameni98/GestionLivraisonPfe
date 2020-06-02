@@ -1,12 +1,9 @@
 package net.javaguides.springboot.springsecurity.model;
 import java.io.IOException;
 import java.util.Collection;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.security.core.Authentication;

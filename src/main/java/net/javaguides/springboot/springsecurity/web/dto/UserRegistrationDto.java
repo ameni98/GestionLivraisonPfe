@@ -7,17 +7,17 @@ import javax.validation.constraints.NotEmpty;
 import net.javaguides.springboot.springsecurity.constraint.FieldMatch;
 
 @FieldMatch.List({
-        @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
-        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
+        @FieldMatch(first = "password", second = "confirmPassword", message = "*confirmation de mot de passe invalide"),
+       // @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")
 })
 public class UserRegistrationDto {
 
-    @NotEmpty
+    @NotEmpty(message="*ce champ est obligatoire")
     private String password;
 
-    @NotEmpty
+    @NotEmpty(message="*ce champ est obligatoire")
     private String confirmPassword;
-    @NotEmpty
+   /* @NotEmpty
     private String nomUtilisateur;
 
     public String getNomUtilisateur() {
@@ -26,10 +26,10 @@ public class UserRegistrationDto {
 
 	public void setNomUtilisateur(String nomUtilisateur) {
 		this.nomUtilisateur = nomUtilisateur;
-	}
+	}*/
 
-	@Email
-    @NotEmpty
+	@Email(message="*adresse email invalide")
+    @NotEmpty(message="*ce champ est obligatoire")
     private String email;
 
 

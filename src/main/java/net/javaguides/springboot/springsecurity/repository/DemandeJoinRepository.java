@@ -5,37 +5,173 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import net.javaguides.springboot.springsecurity.model.Chauffeur;
 import net.javaguides.springboot.springsecurity.model.Marchand;
 import net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto;
 @Repository
 public interface DemandeJoinRepository  extends JpaRepository<Marchand, Long>{
-	@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
-			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
-			+ "AND (vc.description='Adresse de destination') GROUP BY (AC.pk.commande)HAVING COUNT(AC.pk.etatCommande)=1")
+	
+	
+	
+	
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE=1)"
+			+ "AND (vc.description='Adresse de destination')")
 				List<DemandeJoinDto> AffichageDemandeDestination();
 	
-	
-	@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
-			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
-			+ "AND (vc.description='Adresse d''expedition') GROUP BY (AC.pk.commande)HAVING COUNT(AC.pk.etatCommande)=1")
-				List<DemandeJoinDto> AffichageDemandeExpedition();
-	
-	
-	@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE=1)"
+		+ "AND (vc.description='Adresse d''expedition')")
+List<DemandeJoinDto> AffichageDemandeExpedition();
+
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE!=1)"
+		+ "AND (vc.description='Adresse de destination')")
+			List<DemandeJoinDto> AffichageDemandeDestinationTous();
+
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+	+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and(com.etatCommandeE!=1)"
+	+ "AND (vc.description='Adresse d''expedition')")
+List<DemandeJoinDto> AffichageDemandeExpeditionTous();
+
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(com.date_Modif,com.dateCom,c.desc_Colis,g.nom,g.nom) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE=4)"
+		+ "AND (vc.description='Adresse de destination')AND (com.marchandM=?1)")
+
+List<DemandeJoinDto> AffichageDemandeDestinationMarchHisto(Marchand id);
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(com.date_Modif,com.dateCom,c.desc_Colis,g.nom,g.nom)  "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE=4)"
+		+ "AND (vc.description='Adresse d''expedition')AND (com.marchandM=?1)")
+List<DemandeJoinDto> AffichageDemandeExpeditionMarchHisto(Marchand id);
+
+
+
+
+
+
+
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.date_Modif,com.dateCom,c.adresse_marchand,c.adresse_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m, EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (com.etatCommandeE=EC.id)"
+		+ "AND (com.marchandM=?1)")
+
+List<DemandeJoinDto> AffichageDemandeMarch(Marchand id);
+/*@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)"
+		+ "AND (vc.description='Adresse d''expedition')AND (com.marchandM=?1)")
+List<DemandeJoinDto> AffichageDemandeExpeditionMarch(Marchand id);
+*/
+
+
+
+	/*@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
 			+ "FROM Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
 			
 			+ "And (vc.description='Adresse de destination')  AND AC.date IN (select MAX(ACE.date) from AffectationCommandeEtat ACE,Commande com WHERE (com.id=ACE.pk.commande) AND (com.marchandM=?1) GROUP by (ACE.pk.commande)) ")
-			List<DemandeJoinDto> AffichageDemandeDestinationMarch(Marchand id);
+			
 	
 	@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
 			+ "FROM Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
 			
 			+ "And (vc.description='Adresse d''expedition') AND AC.date IN (select MAX(ACE.date) from AffectationCommandeEtat ACE,Commande com WHERE (com.id=ACE.pk.commande) AND (com.marchandM=?1) GROUP by (ACE.pk.commande)) ")
 			List<DemandeJoinDto> AffichageDemandeExpeditionMarch(Marchand id);
+	*/
+	//affichage demande Dest grand tunis
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(vc.pk.colis,com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE=1)"
+		+ "AND (vc.description='Adresse de destination')and(g.libelle='Grand Tunis')")
+List<DemandeJoinDto> AffichageDemandeDestinationGrTunis();
+
+
+
+	/*@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(vc.pk.colis, com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
+			+ "AND (vc.description='Adresse de destination') AND (g.libelle='Grand Tunis') GROUP BY (AC.pk.commande)HAVING COUNT(AC.pk.etatCommande)=1")
+		*/		
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(vc.pk.colis,com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE=1)"
+		+ "AND (vc.description='Adresse d''expedition')and(g.libelle='Grand Tunis') ")
+List<DemandeJoinDto> AffichageDemandeExpeditionGrTunis();
+
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(vc.pk.colis,com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE=1)"
+		+ "AND (vc.description='Adresse de destination')and(g.libelle='Hors grand tunis')")
+List<DemandeJoinDto> AffichageDemandeDestinationHorsGrTunis();
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(vc.pk.colis,com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE=1)"
+		+ "AND (vc.description='Adresse d''expedition')and(g.libelle='Hors grand tunis')")
+
+List<DemandeJoinDto> AffichageDemandeExpeditionHorsGrTunis();
+
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( veh.matricule,com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC,AffectationCommande AC,Vehicule veh WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE!=1)and(AC.chauffeurC=?1)"
+		+ "AND (vc.description='Adresse de destination')and (AC.CommandeC=com.id)and(AC.VehiculeV=veh.id)")
+List<DemandeJoinDto> AffichageDemandeDestinationChauffeur(Chauffeur id);
+
+
+
+
+@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( veh.matricule,com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+		+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,EtatCommande EC,AffectationCommande AC,Vehicule veh WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.etatCommandeE=EC.id)and (com.etatCommandeE!=1)and(AC.chauffeurC=?1)"
+		+ "AND (vc.description='Adresse d''expedition')and (AC.CommandeC=com.id)and(AC.VehiculeV=veh.id)")
+List<DemandeJoinDto> AffichageDemandeExpeditionChauffeur(Chauffeur id);
+
+
+
+	/*@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(vc.pk.colis, com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
+			+ "AND (vc.description='Adresse d''expedition') AND (g.libelle='Grand Tunis')GROUP BY (AC.pk.commande)HAVING COUNT(AC.pk.etatCommande)=1")
+				
+				
+				
+				
 	
+	@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(vc.pk.colis,com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
+			+ "AND (vc.description='Adresse de destination') AND (g.libelle='Hors grand tunis') GROUP BY (AC.pk.commande)HAVING COUNT(AC.pk.etatCommande)=1")
+				List<DemandeJoinDto> AffichageDemandeDestinationHorsGrTunis();
+	
+	@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto(vc.pk.colis,com.dateCom,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
+			+ "AND (vc.description='Adresse d''expedition') AND (g.libelle='Hors grand tunis')GROUP BY (AC.pk.commande)HAVING COUNT(AC.pk.etatCommande)=1")
+				List<DemandeJoinDto> AffichageDemandeExpeditionHorsGrTunis();
+
+	
+	*/
 	
 	Marchand findByEmail(String username);
+	//Chauffeur findeByEmail(String username);
 	
+		/*@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( AF.date_departColis,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC,AffectationCommande AF  WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)AND(AF.id_affectCommande=AC.affectationCommandeC)"
+			+ "AND (vc.description='Adresse de destination') AND (AC.pk.etatCommande)=2")
+			*/
+	
+	
+	/*@Query(value=" SELECT  new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( AF.date_departColis,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC ,AffectationCommande AF WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
+			+ "AND (vc.description='Adresse de destination') AND(AC.pk.etatCommande=2)")*/
+		//	List<DemandeJoinDto> AffichageDemandeDestinationChauffeur();
+
+	
+	
+	
+	/*@Query(value=" SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( AF.date_departColis,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM	Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC,AffectationCommande AF  WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)AND(AF.id_affectCommande=AC.affectationCommandeC)"
+			+ "AND (vc.description='Adresse d''expedition') AND (AC.pk.etatCommande)=2")*/
+			
+	   
+
+		/*	@Query(value=" SELECT  new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( AF.date_departColis,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids, m.nom, m.Prenom,m.tel,v.nom,g.nom,v.nom,g.nom,EC.nom,com.id) "
+			+ "FROM Colis c,Commande com,Marchand m ,Ville v,Gouvernerat g,VilleColis vc,AffectationCommandeEtat AC,EtatCommande EC ,AffectationCommande AF WHERE (m.id=com.marchandM) AND (com.id=c.commandeC)AND (vc.pk.colis=c.id_colis)AND (vc.pk.ville=v.id_ville) AND (v.gouverneratG=g.id)AND (com.id=AC.pk.commande)AND (com.id=AC.pk.commande)AND(AC.pk.etatCommande=EC.id)"
+			+ "AND (vc.description='Adresse d''expedition') AND(AC.pk.etatCommande=2)")*/
+
+	//		List<DemandeJoinDto> AffichageDemandeExpeditionChauffeur();
+	
+	
+	
+			}
+
 	
 	
 
@@ -87,4 +223,4 @@ public interface DemandeJoinRepository  extends JpaRepository<Marchand, Long>{
 	//SELECT new net.javaguides.springboot.springsecurity.web.dto.DemandeJoinDto( com.dateCom,c.id_colis,c.adresse_marchand,c.adresse_client,c.code_Postale_marchand,c.code_Postale_client,c.desc_Colis,c.nom_client,c.prenom_client,c.rasison_sociale,c.numTel_client,c.poids,c.type_destination, m.nom, m.Prenom,m.tel) "
 	//+ "FROM	Colis c,Commande com,Marchand m WHERE (m.id=com.marchandM) AND (com.id=c.commandeC) "
 	
-}
+

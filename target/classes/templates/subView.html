@@ -1,0 +1,18 @@
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+ 
+    <select  class="form-control 	" name="idChauffeur" id="idChauffeur" >
+    <option th:value="null"></option>
+      <option th:each="chauffeur: ${chauffeurs}" th:text="${chauffeur.nom} +' ' + ${chauffeur.prenom}" th:value="${chauffeur.id}"
+      > </option>
+      </select>
+      <label id="labelControl"></label>
+     
+</body>
+</html>

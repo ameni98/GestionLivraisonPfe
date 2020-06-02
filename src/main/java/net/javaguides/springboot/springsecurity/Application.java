@@ -1,23 +1,14 @@
 package net.javaguides.springboot.springsecurity;
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.thymeleaf.dialect.springdata.SpringDataDialect;
 
-//import net.javaguides.springboot.springsecurity.config.ConfigMailSender;
-import net.javaguides.springboot.springsecurity.model.Gouvernerat;
-import net.javaguides.springboot.springsecurity.repository.RepositoryGover;
-//import org.springframework.test.context.jdbc.Sql;
 
-
+//SpringBootApplication c'est une classe java par déafaut pour la configuaration automatique de spring et automatiquement scanner (Scan)
+//le projet intégral afin de découvrir des composants de  Spring (Controller, Bean, Service,...)elle regroupe tous 
+//ces annotation(@Configuration,@EnableAutoConfiguration,@ComponentScan)
 @SpringBootApplication
 public class Application  {
 	
@@ -30,6 +21,12 @@ public class Application  {
 	public SpringDataDialect springDataDialect() {
 		return new SpringDataDialect();
 	}
+	
+	//ajouter un dialect spring 
+	/*@Bean
+	public org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect SpringSecurityDialect() {
+		return new org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect();
+	}*/
 	
 	}
 

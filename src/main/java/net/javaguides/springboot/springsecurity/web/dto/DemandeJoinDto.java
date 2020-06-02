@@ -1,11 +1,10 @@
 package net.javaguides.springboot.springsecurity.web.dto;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
-import org.hibernate.annotations.Entity;
 
+import net.javaguides.springboot.springsecurity.model.Colis;
 import net.javaguides.springboot.springsecurity.model.EtatCommande;
+
 
 public class DemandeJoinDto {
 	//ce qui concerner expediteur
@@ -25,7 +24,7 @@ public class DemandeJoinDto {
 	    private String nom;
 	    private String prenom;
 	    private String tel;
-	    private Long id_colis;
+	    private Colis id_colis;
 	    private String nomVilleC;
 	    private String nomVilleM;
 	    private String descriptionVilleColis;
@@ -34,7 +33,22 @@ public class DemandeJoinDto {
 	    private String nomEtat;
 	    private int idCom;
 	    private EtatCommande idEtat;
+	    private String matricule;
+	    private String date_modif;
 	    
+	    
+		public String getDate_modif() {
+			return date_modif;
+		}
+		public void setDate_modif(String date_modif) {
+			this.date_modif = date_modif;
+		}
+		public String getMatricule() {
+			return matricule;
+		}
+		public void setMatricule(String matricule) {
+			this.matricule = matricule;
+		}
 		public EtatCommande getIdEtat() {
 			return idEtat;
 		}
@@ -47,10 +61,10 @@ public class DemandeJoinDto {
 		public void setNomEtat(String nomEtat) {
 			this.nomEtat = nomEtat;
 		}
-		public Long getId_colis() {
+		public Colis getId_colis() {
 			return id_colis;
 		}
-		public void setId_colis(Long id_colis) {
+		public void setId_colis(Colis id_colis) {
 			this.id_colis = id_colis;
 		}
 		public String getDate_com() {
@@ -144,6 +158,49 @@ public class DemandeJoinDto {
 			this.tel = tel;
 		}
 		
+
+		public DemandeJoinDto( String date_modif,String date_com,String desc_Colis,String nomGouverneratM)
+			 {
+			this.date_com=date_com;
+			this.date_modif=date_modif;
+			//this.nomGouverneratC=nomGouverneratC;
+			this.nomGouverneratM=nomGouverneratM;
+			
+			 }
+		public DemandeJoinDto( String date_modif,String date_com,String desc_Colis,String nomGouverneratM,String nomGouverneratC)
+		 {
+		this.date_com=date_com;
+		this.date_modif=date_modif;
+		this.nomGouverneratC=nomGouverneratC;
+		this.nomGouverneratM=nomGouverneratM;
+		this.desc_Colis=desc_Colis;
+		
+		 }
+		
+		
+		
+		public DemandeJoinDto( String date_modif,String date_com, String adresse_marchand, String adresse_client,
+				String desc_Colis,
+				 String nom_client,
+					String prenom_client
+					, String raison_sociale, String tel,float poids,String nomEtat,int commandeId
+				)
+		 {
+		this.date_com=date_com;
+		this.date_modif=date_modif;
+this.adresse_marchand=adresse_marchand;
+this.adresse_client=adresse_client;
+this.nom_client=nom_client;
+this.raison_sociale=raison_sociale;
+this.poids=poids;
+this.nomEtat=nomEtat;
+this.idCom=commandeId;
+this.numTel_client=tel;
+		this.desc_Colis=desc_Colis;
+		
+		 }
+		
+			 
 		public DemandeJoinDto(String date_com, String adresse_marchand, String adresse_client,
 				String code_Postale_marchand, String code_Postale_client, String desc_Colis, String nom_client,
 				String prenom_client, String raison_sociale, String numTel_client, float poids,
@@ -209,6 +266,75 @@ public class DemandeJoinDto {
 			//this.id_colis = id_colis;
 			
 		}
+		
+
+		public DemandeJoinDto(String matricule,String date_com, String adresse_marchand, String adresse_client,
+				String code_Postale_marchand, String code_Postale_client, String desc_Colis, String nom_client,
+				String prenom_client, String raison_sociale, String numTel_client, float poids,
+				String nom, String prenom, String tel, String nomVilleC,
+				String nomGouverneratC,String nomVilleM,
+				String nomGouverneratM,String nomEtat,int commandeId) {
+			super();
+			this.date_com = date_com;
+			this.adresse_marchand = adresse_marchand;
+			this.adresse_client = adresse_client;
+			this.code_Postale_marchand = code_Postale_marchand;
+			this.code_Postale_client = code_Postale_client;
+			this.desc_Colis = desc_Colis;
+			this.nom_client = nom_client;
+			this.prenom_client = prenom_client;
+			this.raison_sociale = raison_sociale;
+			this.numTel_client = numTel_client;
+			this.poids = poids;
+			this.nomGouverneratC=nomGouverneratC;
+			this.nomVilleC=nomVilleC;
+			this.nomGouverneratM=nomGouverneratM;
+			this.nomVilleM=nomVilleM;
+	;
+			this.nom = nom;
+			this.prenom = prenom;
+			this.tel = tel;
+			this.nomEtat=nomEtat;
+			this.idCom=commandeId;
+			this.matricule=matricule;
+			//this.id_colis = id_colis;
+			
+		}
+		
+		
+		
+		public DemandeJoinDto(Colis id_colis,String date_com, String adresse_marchand, String adresse_client,
+				String code_Postale_marchand, String code_Postale_client, String desc_Colis, String nom_client,
+				String prenom_client, String raison_sociale, String numTel_client, float poids,
+				String nom, String prenom, String tel, String nomVilleC,
+				String nomGouverneratC,String nomVilleM,
+				String nomGouverneratM,String nomEtat,int commandeId) {
+			super();
+			this.date_com = date_com;
+			this.adresse_marchand = adresse_marchand;
+			this.adresse_client = adresse_client;
+			this.code_Postale_marchand = code_Postale_marchand;
+			this.code_Postale_client = code_Postale_client;
+			this.desc_Colis = desc_Colis;
+			this.nom_client = nom_client;
+			this.prenom_client = prenom_client;
+			this.raison_sociale = raison_sociale;
+			this.numTel_client = numTel_client;
+			this.poids = poids;
+			this.nomGouverneratC=nomGouverneratC;
+			this.nomVilleC=nomVilleC;
+			this.nomGouverneratM=nomGouverneratM;
+			this.nomVilleM=nomVilleM;
+	;
+			this.nom = nom;
+			this.prenom = prenom;
+			this.tel = tel;
+			this.nomEtat=nomEtat;
+			this.idCom=commandeId;
+			this.id_colis = id_colis;
+			
+		}
+		
 		
 		
 		

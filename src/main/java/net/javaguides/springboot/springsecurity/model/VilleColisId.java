@@ -7,12 +7,12 @@ public class VilleColisId implements java.io.Serializable{
 	 /**
 	 * 
 	 */
-//	private static final long serialVersionUID = 1L;
-	private Ville ville;
+
+	 private Ville ville;
 	 private Colis colis;
-	@ManyToOne(cascade = CascadeType.ALL)
-  //   @JoinColumn(name = "id_colis")
-    
+	 
+	 
+	@ManyToOne(cascade = CascadeType.ALL)    
      public Colis getColis() {
              return colis;
      }
@@ -21,9 +21,7 @@ public class VilleColisId implements java.io.Serializable{
              this.colis = c;
      }
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "id_ville")
-     
+	@ManyToOne(cascade = CascadeType.ALL)  
      public Ville getVille() {
              return ville;
      }

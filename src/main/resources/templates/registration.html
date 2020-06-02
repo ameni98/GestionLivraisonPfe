@@ -1,545 +1,580 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="utf-8" />
+<head>
+<meta charset="utf-8" />
+<head>
+<title>Livraison &mdash;</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<link
+	href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700"
+	rel="stylesheet">
 
-  <head>
-    <title>Livraison &mdash;</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css"
-  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
-    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700" rel="stylesheet">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="css/aos.css">
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="css/style.css">
 
 <link rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
-	<style>
+<style>
+.error{color:red;
+}
+.inval {
+	border: 1px solid red;
+}
 .small-box {
-  border-radius: 2px;
-  position: relative;
-  display: block;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	border-radius: 2px;
+	position: relative;
+	display: block;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
-.small-box > .inner {
-  padding: 10px;
+
+.small-box>.inner {
+	padding: 10px;
 }
-.small-box > .small-box-footer {
-  position: relative;
-  text-align: center;
-  padding: 3px 0;
-  color: #fff;
-  color: rgba(255, 255, 255, 0.8);
-  display: block;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.1);
-  text-decoration: none;
+
+.small-box>.small-box-footer {
+	position: relative;
+	text-align: center;
+	padding: 3px 0;
+	color: #fff;
+	color: rgba(255, 255, 255, 0.8);
+	display: block;
+	z-index: 10;
+	background: rgba(0, 0, 0, 0.1);
+	text-decoration: none;
 }
-.small-box > .small-box-footer:hover {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.15);
+
+.small-box>.small-box-footer:hover {
+	color: #fff;
+	background: rgba(0, 0, 0, 0.15);
 }
+
 .small-box h3 {
-  font-size: 38px;
-  font-weight: bold;
-  margin: 0 0 10px 0;
-  white-space: nowrap;
-  padding: 0;
+	font-size: 38px;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+	white-space: nowrap;
+	padding: 0;
 }
+
 .small-box p {
-  font-size: 15px;
+	font-size: 15px;
 }
-.small-box p > small {
-  display: block;
-  color: #f9f9f9;
-  font-size: 13px;
-  margin-top: 5px;
+
+.small-box p>small {
+	display: block;
+	color: #f9f9f9;
+	font-size: 13px;
+	margin-top: 5px;
 }
-.small-box h3,
-.small-box p {
-  z-index: 5;
+
+.small-box h3, .small-box p {
+	z-index: 5;
 }
+
 .small-box .icon {
-  -webkit-transition: all 0.3s linear;
-  -o-transition: all 0.3s linear;
-  transition: all 0.3s linear;
-  position: absolute;
-  top: -10px;
-  right: 10px;
-  z-index: 0;
-  font-size: 90px;
-  color: rgba(0, 0, 0, 0.15);
+	-webkit-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+	position: absolute;
+	top: -10px;
+	right: 10px;
+	z-index: 0;
+	font-size: 90px;
+	color: rgba(0, 0, 0, 0.15);
 }
+
 .small-box:hover {
-  text-decoration: none;
-  color: #f9f9f9;
+	text-decoration: none;
+	color: #f9f9f9;
 }
+
 .small-box:hover .icon {
-  font-size: 95px;
+	font-size: 95px;
 }
-@media (max-width: 767px) {
-  .small-box {
-    text-align: center;
-  }
-  .small-box .icon {
-    display: none;
-  }
-  .small-box p {
-    font-size: 12px;
-  }
+
+@media ( max-width : 767px) {
+	.small-box {
+		text-align: center;
+	}
+	.small-box .icon {
+		display: none;
+	}
+	.small-box p {
+		font-size: 12px;
+	}
 }
 /*
  * Component: Box
  * --------------
  */
 .box {
-  position: relative;
-  border-radius: 3px;
-  background: #ffffff;
-  border-top: 3px solid #d2d6de;
-  margin-bottom: 20px;
-  width: 100%;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	position: relative;
+	border-radius: 3px;
+	background: #ffffff;
+	border-top: 3px solid #d2d6de;
+	margin-bottom: 20px;
+	width: 100%;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 /*.box.box-primar {
   border-top-color: #3c8dbc;
 }*/
 .box.box-info {
-  border-top-color: #00c0ef;
+	border-top-color: #00c0ef;
 }
+
 .box.box-danger {
-  border-top-color: #dd4b39;
+	border-top-color: #dd4b39;
 }
+
 .box.box-warning {
-  border-top-color: #f39c12;
+	border-top-color: #f39c12;
 }
+
 .box.box-success {
-  border-top-color: #00a65a;
+	border-top-color: #00a65a;
 }
+
 .box.box-default {
-  border-top-color: #d2d6de;
+	border-top-color: #d2d6de;
 }
-.box.collapsed-box .box-body,
-.box.collapsed-box .box-footer {
-  display: none;
+
+.box.collapsed-box .box-body, .box.collapsed-box .box-footer {
+	display: none;
 }
-.box .nav-stacked > li {
-  border-bottom: 1px solid #f4f4f4;
-  margin: 0;
+
+.box .nav-stacked>li {
+	border-bottom: 1px solid #f4f4f4;
+	margin: 0;
 }
-.box .nav-stacked > li:last-of-type {
-  border-bottom: none;
+
+.box .nav-stacked>li:last-of-type {
+	border-bottom: none;
 }
+
 .box.height-control .box-body {
-  max-height: 300px;
-  overflow: auto;
+	max-height: 300px;
+	overflow: auto;
 }
+
 .box .border-right {
-  border-right: 1px solid #f4f4f4;
+	border-right: 1px solid #f4f4f4;
 }
+
 .box .border-left {
-  border-left: 1px solid #f4f4f4;
+	border-left: 1px solid #f4f4f4;
 }
+
 .box.box-solid {
-  border-top: 0;
+	border-top: 0;
 }
-.box.box-solid > .box-header .btn.btn-default {
-  background: transparent;
+
+.box.box-solid>.box-header .btn.btn-default {
+	background: transparent;
 }
-.box.box-solid > .box-header .btn:hover,
-.box.box-solid > .box-header a:hover {
-  background: rgba(0, 0, 0, 0.1);
+
+.box.box-solid>.box-header .btn:hover, .box.box-solid>.box-header a:hover
+	{
+	background: rgba(0, 0, 0, 0.1);
 }
+
 .box.box-solid.box-default {
-  border: 1px solid #d2d6de;
+	border: 1px solid #d2d6de;
 }
-.box.box-solid.box-default > .box-header {
-  color: #444444;
-  background: #d2d6de;
-  background-color: #d2d6de;
+
+.box.box-solid.box-default>.box-header {
+	color: #444444;
+	background: #d2d6de;
+	background-color: #d2d6de;
 }
-.box.box-solid.box-default > .box-header a,
-.box.box-solid.box-default > .box-header .btn {
-  color: #444444;
+
+.box.box-solid.box-default>.box-header a, .box.box-solid.box-default>.box-header .btn
+	{
+	color: #444444;
 }
+
 .box.box-solid.box-warning {
-  border: 1px solid #3c8dbc;
+	border: 1px solid #3c8dbc;
 }
-.box.box-solid.box-warning > .box-header {
-  color: #ffffff;
-  background: #3c8dbc;
-  background-color: #3c8dbc;
+
+.box.box-solid.box-warning>.box-header {
+	color: #ffffff;
+	background: #3c8dbc;
+	background-color: #3c8dbc;
 }
-.box.box-solid.box-warning > .box-header a,
-.box.box-solid.box-warning > .box-header .btn {
-  color: #ffffff;
+
+.box.box-solid.box-warning>.box-header a, .box.box-solid.box-warning>.box-header .btn
+	{
+	color: #ffffff;
 }
+
 .box.box-solid.box-info {
-  border: 1px solid #00c0ef;
+	border: 1px solid #00c0ef;
 }
-.box.box-solid.box-info > .box-header {
-  color: #ffffff;
-  background: #00c0ef;
-  background-color: #00c0ef;
+
+.box.box-solid.box-info>.box-header {
+	color: #ffffff;
+	background: #00c0ef;
+	background-color: #00c0ef;
 }
-.box.box-solid.box-info > .box-header a,
-.box.box-solid.box-info > .box-header .btn {
-  color: #ffffff;
+
+.box.box-solid.box-info>.box-header a, .box.box-solid.box-info>.box-header .btn
+	{
+	color: #ffffff;
 }
+
 .box.box-solid.box-danger {
-  border: 1px solid #dd4b39;
+	border: 1px solid #dd4b39;
 }
-.box.box-solid.box-danger > .box-header {
-  color: #ffffff;
-  background: #dd4b39;
-  background-color: #dd4b39;
+
+.box.box-solid.box-danger>.box-header {
+	color: #ffffff;
+	background: #dd4b39;
+	background-color: #dd4b39;
 }
-.box.box-solid.box-danger > .box-header a,
-.box.box-solid.box-danger > .box-header .btn {
-  color: #ffffff;
+
+.box.box-solid.box-danger>.box-header a, .box.box-solid.box-danger>.box-header .btn
+	{
+	color: #ffffff;
 }
+
 .box.box-solid.box-warning {
-  border: 1px solid #f39c12;
+	border: 1px solid #f39c12;
 }
-.box.box-solid.box-warning > .box-header {
-  color: #ffffff;
-  background: #f39c12;
-  background-color: #f39c12;
+
+.box.box-solid.box-warning>.box-header {
+	color: #ffffff;
+	background: #f39c12;
+	background-color: #f39c12;
 }
-.box.box-solid.box-warning > .box-header a,
-.box.box-solid.box-warning > .box-header .btn {
-  color: #ffffff;
+
+.box.box-solid.box-warning>.box-header a, .box.box-solid.box-warning>.box-header .btn
+	{
+	color: #ffffff;
 }
+
 .box.box-solid.box-success {
-  border: 1px solid #00a65a;
+	border: 1px solid #00a65a;
 }
-.box.box-solid.box-success > .box-header {
-  color: #ffffff;
-  background: #00a65a;
-  background-color: #00a65a;
+
+.box.box-solid.box-success>.box-header {
+	color: #ffffff;
+	background: #00a65a;
+	background-color: #00a65a;
 }
-.box.box-solid.box-success > .box-header a,
-.box.box-solid.box-success > .box-header .btn {
-  color: #ffffff;
+
+.box.box-solid.box-success>.box-header a, .box.box-solid.box-success>.box-header .btn
+	{
+	color: #ffffff;
 }
-.box.box-solid > .box-header > .box-tools .btn {
-  border: 0;
-  box-shadow: none;
+
+.box.box-solid>.box-header>.box-tools .btn {
+	border: 0;
+	box-shadow: none;
 }
-.box.box-solid[class*='bg'] > .box-header {
-  color: #fff;
+
+.box.box-solid[class*='bg']>.box-header {
+	color: #fff;
 }
-.box .box-group > .box {
-  margin-bottom: 5px;
+
+.box .box-group>.box {
+	margin-bottom: 5px;
 }
+
 .box .knob-label {
-  text-align: center;
-  color: #333;
-  font-weight: 100;
-  font-size: 12px;
-  margin-bottom: 0.3em;
+	text-align: center;
+	color: #333;
+	font-weight: 100;
+	font-size: 12px;
+	margin-bottom: 0.3em;
 }
-.box > .overlay,
-.overlay-wrapper > .overlay,
-.box > .loading-img,
-.overlay-wrapper > .loading-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+
+.box>.overlay, .overlay-wrapper>.overlay, .box>.loading-img,
+	.overlay-wrapper>.loading-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
-.box .overlay,
-.overlay-wrapper .overlay {
-  z-index: 50;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 3px;
+
+.box .overlay, .overlay-wrapper .overlay {
+	z-index: 50;
+	background: rgba(255, 255, 255, 0.7);
+	border-radius: 3px;
 }
-.box .overlay > .fa,
-.overlay-wrapper .overlay > .fa {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -15px;
-  margin-top: -15px;
-  color: #000;
-  font-size: 30px;
+
+.box .overlay>.fa, .overlay-wrapper .overlay>.fa {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -15px;
+	margin-top: -15px;
+	color: #000;
+	font-size: 30px;
 }
-.box .overlay.dark,
-.overlay-wrapper .overlay.dark {
-  background: rgba(0, 0, 0, 0.5);
+
+.box .overlay.dark, .overlay-wrapper .overlay.dark {
+	background: rgba(0, 0, 0, 0.5);
 }
-.box-header:before,
-.box-body:before,
-.box-footer:before,
-.box-header:after,
-.box-body:after,
-.box-footer:after {
-  content: " ";
-  display: table;
+
+.box-header:before, .box-body:before, .box-footer:before, .box-header:after,
+	.box-body:after, .box-footer:after {
+	content: " ";
+	display: table;
 }
-.box-header:after,
-.box-body:after,
-.box-footer:after {
-  clear: both;
+
+.box-header:after, .box-body:after, .box-footer:after {
+	clear: both;
 }
+
 .box-header {
-  color: #444;
-  display: block;
-  padding: 10px;
-  position: relative;
+	color: #444;
+	display: block;
+	padding: 10px;
+	position: relative;
 }
+
 .box-header.with-border {
-  border-bottom: 1px solid #f4f4f4;
+	border-bottom: 1px solid #f4f4f4;
 }
+
 .collapsed-box .box-header.with-border {
-  border-bottom: none;
+	border-bottom: none;
 }
-.box-header > .fa,
-.box-header > .glyphicon,
-.box-header > .ion,
-.box-header .box-title {
-  display: inline-block;
-  font-size: 18px;
-  margin: 0;
-  line-height: 1;
+
+.box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title
+	{
+	display: inline-block;
+	font-size: 18px;
+	margin: 0;
+	line-height: 1;
 }
-.box-header > .fa,
-.box-header > .glyphicon,
-.box-header > .ion {
-  margin-right: 5px;
+
+.box-header>.fa, .box-header>.glyphicon, .box-header>.ion {
+	margin-right: 5px;
 }
-.box-header > .box-tools {
-  position: absolute;
-  right: 10px;
-  top: 5px;
+
+.box-header>.box-tools {
+	position: absolute;
+	right: 10px;
+	top: 5px;
 }
-.box-header > .box-tools [data-toggle="tooltip"] {
-  position: relative;
+
+.box-header>.box-tools [data-toggle="tooltip"] {
+	position: relative;
 }
-.box-header > .box-tools.pull-right .dropdown-menu {
-  right: 0;
-  left: auto;
+
+.box-header>.box-tools.pull-right .dropdown-menu {
+	right: 0;
+	left: auto;
 }
-.box-header > .box-tools .dropdown-menu > li > a {
-  color: #444!important;
+
+.box-header>.box-tools .dropdown-menu>li>a {
+	color: #444 !important;
 }
-	</style>
- </head>
+</style>
+</head>
 
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
 
-    <div id="overlayer"></div>
-    <div class="loader">
-      <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
+	<div id="overlayer"></div>
+	<div class="loader">
+		<div class="spinner-border text-primary" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
 
-    <div class="site-wrap" id="home-section">
+	<div class="site-wrap" id="home-section">
 
-      <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-      </div>
-
-
-      <div class="top-bar">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">RapidLivraison2020@gmail.com</span></a>
-              <span class="mx-md-2 d-inline-block"></span>
-              <a href="#" class=""><span class="mr-2  icon-phone"></span> <span class="d-none d-md-inline-block">+ (216) 54542196</span></a>
-
-
-              <div class="float-right">
-
-                <a href="#" class=""><span class="mr-2  icon-twitter"></span> <span class="d-none d-md-inline-block">Twitter</span></a>
-                <span class="mx-md-2 d-inline-block"></span>
-                <a href="#" class=""><span class="mr-2  icon-facebook"></span> <span class="d-none d-md-inline-block">Facebook</span></a>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-       <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
-
-        <div class="container">
-          <div class="row align-items-center position-relative">
-
-
-            <div class="site-logo">
-              <a href="index.html" class="text-black"><span class="text-primary">Rapid Livraison</a>
-            </div>
-
-            <div class="col-12">
-              <nav class="site-navigation text-right ml-auto " role="navigation">
-
-                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-               <li><a th:href="@{/Accueil}" class="nav-link">Acceuil</a></li>
-                  <li><a th:href="@{/Accueil#services-section}" class="nav-link">Services</a></li>
-                  <li><a th:href="@{/login}" class="nav-link">Expédier</a></li>
-                  <li><a th:href="@{/login}" class="nav-link">Se Connecter</a></li>
-                </ul>
-              </nav>
-
-            </div>
-
-            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
-          </div>
-       
-
-      </header>
-
-
-	<div class="container">
-	
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-
-				<div th:if="${param.success}">
-					<div class="alert alert-info">You've successfully registered
-						to our awesome app!</div>
+		<div class="site-mobile-menu site-navbar-target">
+			<div class="site-mobile-menu-header">
+				<div class="site-mobile-menu-close mt-3">
+					<span class="icon-close2 js-menu-toggle"></span>
 				</div>
-  <div class="box box-warning">
-                    <div class="box-header with-border">
-                    <h3 class="box-title">Registration</h3>
-                    </div>
-				
-				<form th:action="@{/registration}"  class="panel-warning"th:object="${marchand}" method="post">
-    <div class="box-body">
-					<p class="error-message" th:if="${#fields.hasGlobalErrors()}"
-						th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
-						error</p>
-
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('nom')}? 'has-error':''">
-						<label for="nom" class="control-label">Nom</label> <input
-							id="nom" class="form-control" th:field="*{nom}" />
-						<p class="error-message"
-							th:each="error: ${#fields.errors('Nom')}"
-							th:text="${error}">Validation error</p>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('prenom')}? 'has-error':''">
-						<label for="prenom" class="control-label">prenom</label> <input
-							id="prenom" class="form-control" th:field="*{prenom}" />
-						<p class="error-message"
-							th:each="error : ${#fields.errors('prenom')}"
-							th:text="${error}">Validation error</p>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-						<label for="email" class="control-label">E-mail</label> <input
-							id="email" class="form-control" th:field="*{email}" />
-						<p class="error-message"
-							th:each="error : ${#fields.errors('email')}" th:text="${error}">Validation
-							error</p>
-					</div>
-						<div class="form-group"
-						th:classappend="${#fields.hasErrors('nomUtilisateur')}? 'has-error':''">
-						<label for="nomUtilisateur" class="control-label">nomUtilisateur</label> <input
-							id="nomUtilisateur" class="form-control" th:field="*{nomUtilisateur}" />
-						<p class="error-message"
-							th:each="error: ${#fields.errors('nomUtilisateur')}"
-							th:text="${error}">Validation error</p>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-						<label for="password" class="control-label">Password</label> <input
-							id="password" class="form-control" type="password"
-							th:field="*{password}" />
-						<p class="error-message"
-							th:each="error : ${#fields.errors('password')}"
-							th:text="${error}">Validation error</p>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
-						<label for="confirmPassword" class="control-label">Confirm
-							password</label> <input id="confirmPassword" class="form-control"
-							type="password" th:field="*{confirmPassword}" />
-						<p class="error-message"
-							th:each="error : ${#fields.errors('confirmPassword')}"
-							th:text="${error}">Validation error</p>
-					</div>
-					
-				
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('adresse')}? 'has-error':''">
-						<label for="adresse" class="control-label">adresse</label> <input
-							id="adresse" class="form-control" th:field="*{adresse}" />
-						<p class="error-message"
-							th:each="error: ${#fields.errors('adresse')}"
-							th:text="${error}">Validation error</p>
-					</div>
-					
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('NumTel')}? 'has-error':''">
-						<label for="NumTel" class="control-label">NumTel</label> <input
-							id="NumTel" class="form-control" th:field="*{NumTel}" />
-						<p class="error-message"
-							th:each="error: ${#fields.errors('NumTel')}"
-							th:text="${error}">Validation error</p>
-					</div>
-					<div class="form-group"
-						th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
-						<input id="terms" type="checkbox" th:field="*{terms}" />   <label
-							class="control-label" for="terms"> I agree with the <a
-							href="#">terms and conditions</a> for Registration.
-						</label>
-						<p class="error-message"
-							th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation
-							error</p>
-					</div>
-				
-					<div class="form-group">
-						<button type="submit" class="btn btn-success">Créer</button>
-						<span>Already registered? <a href="/" th:href="@{/login}">Login
-								here</a></span>
-					</div>
-
-				</form>
 			</div>
+			<div class="site-mobile-menu-body"></div>
+		</div>
+
+
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span>
+							<span class="d-none d-md-inline-block">RapidLivraison2020@gmail.com</span></a>
+						<span class="mx-md-2 d-inline-block"></span> <a href="#" class=""><span
+							class="mr-2  icon-phone"></span> <span
+							class="d-none d-md-inline-block">+ (216) 54542196</span></a>
+
+
+						<div class="float-right">
+
+							<a href="#" class=""><span class="mr-2  icon-twitter"></span>
+								<span class="d-none d-md-inline-block">Twitter</span></a> <span
+								class="mx-md-2 d-inline-block"></span> <a href="#" class=""><span
+								class="mr-2  icon-facebook"></span> <span
+								class="d-none d-md-inline-block">Facebook</span></a>
+
+						</div>
+
+					</div>
+
+				</div>
+
 			</div>
 		</div>
-	</div></div>
+		     <!-- insertion de fragment header.html -->
+       <header class="site-navbar js-sticky-header site-navbar-target" role="banner" th:insert="Header.html">
+     </header>
 
-  <script type="text/javascript"
-    th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
-  <script type="text/javascript"
-    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/aos.js"></script>
+		<div class="container">
 
-    <script src="js/main.js"></script>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<!-- si user arrive à s'inscrire on affiche ce message -->
+					<div th:if="${param.success}">
+						<div class="alert alert-info">Vous étes bien inscrit à notre
+							application!</div>
+					</div>
+					
+							<h3 class="box-title">créer un compte</h3>
+						
+						<div class="box box-warning">
+						<div class="box-header with-border">
+						<form th:action="@{/registration}" class="panel-warning"
+							th:object="${marchand}" method="post">
+							<div class="box-body">
+
+
+								<div class="form-group"
+									>
+									<label for="nom" class="control-label">Nom</label> <input
+										id="nom" class="form-control" th:field="*{nom}"
+										th:classappend="${#fields.hasErrors('nom')}?'inval':''" />
+									<!-- ici s'il y aura erreur on ajoute un message d'erreur -->
+									<label class="error"
+									th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}">
+
+								</label>
+								</div>
+								<div class="form-group"
+									>
+									<label for="prenom" class="control-label">Prénom</label> <input
+										id="prenom" class="form-control" th:field="*{prenom}"
+										th:classappend="${#fields.hasErrors('prenom')}?'inval':''" />
+									<label class="error"
+									th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}">
+
+								</label>
+								</div>
+								<div class="form-group"
+									>
+									<label for="email" class="control-label">E-mail</label> <input
+										id="email" class="form-control" th:field="*{email}" 
+										th:classappend="${#fields.hasErrors('email')}?'inval':''" />
+									<label class="error"
+									th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+
+								</label>
+								</div>
+								<div class="form-group"
+									>
+									<label for="password" class="control-label">Mot de passe</label> <input
+										id="password" class="form-control" type="password"
+										th:field="*{password}"
+										th:classappend="${#fields.hasErrors('password')}?'inval':''" />
+									<label class="error"
+									th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+
+								</label>
+								</div>
+								<div class="form-group">
+									<label for="confirmPassword" class="control-label">Confirmation de mot de passe </label> 
+									<input id="confirmPassword" class="form-control"
+										type="password" th:field="*{confirmPassword}"
+										th:classappend="${#fields.hasErrors('confirmPassword')}?'inval':''" />
+									<p class="error" th:if="${#fields.hasGlobalErrors()}" 
+									th:each="error : ${#fields.errors('global')}"
+									th:text="${error}">Validation error</p>
+									
+								</div>
+
+
+								<div class="form-group"
+									>
+									<label for="adresse" class="control-label">Adresse</label> <input
+										id="adresse" class="form-control" th:field="*{adresse}" 
+										th:classappend="${#fields.hasErrors('adresse')}?'inval':''"/>
+								<label class="error"
+									th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}">
+
+								</label>
+								</div>
+
+								<div class="form-group"
+									>
+									<label for="NumTel" class="control-label">Numéro de téléphone </label> <input
+										id="NumTel" class="form-control" th:field="*{NumTel}" 
+										th:classappend="${#fields.hasErrors('NumTel')}?'inval':''"/>
+									<label class="error"
+									th:if="${#fields.hasErrors('NumTel')}" th:errors="*{NumTel}">
+
+								</label>
+								</div>
+								<div class="form-group"
+									>
+									<input id="terms" type="checkbox" th:field="*{terms}" />   <label
+										class="control-label" for="terms"> Je suis d'accord
+										avec les termes et les conditions d'inscription. </label>
+									<p class="error" 
+										th:each="error : ${#fields.errors('terms')}"
+										th:text="${error}">Validation error</p>
+								</div>
+
+								<div class="form-group">
+									<button type="submit" class="btn btn-warning " >Créer</button>
+									<span>Déja inscrit? <a href="/" th:href="@{/login}">Se
+											connecter ici</a></span>
+								</div>
+						</form>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.sticky.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/aos.js"></script>
+
+	<script src="js/main.js"></script>
 
 </body>
 </html>

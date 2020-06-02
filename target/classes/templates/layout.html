@@ -1,59 +1,75 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
-    <title layout:title-pattern="$LAYOUT_TITLE :: $CONTENT_TITLE">livraison</title>
+<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<title layout:title-pattern="$LAYOUT_TITLE :: $CONTENT_TITLE">livraison</title>
 
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport" />
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="#" th:href="@{/css/select2.min.css}"/>
-    <link rel="stylesheet" href="#" th:href="@{/css/select2-bootstrap.min.css}"/>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css"/>
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" th:href="@{/css/bootstrap-datetimepicker.min.css}"/>
-    <link rel="stylesheet" href="#" th:href="@{/css/AdminLTE.min.css}"/>
-    <link rel="stylesheet" href="#" th:href="@{/css/skins/_all-skins.min.css}"/>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="#" th:href="@{/css/select2.min.css}" />
+<link rel="stylesheet" href="#"
+	th:href="@{/css/select2-bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.min.css" />
+<!-- bootstrap datepicker -->
+<link rel="stylesheet"
+	th:href="@{/css/bootstrap-datetimepicker.min.css}" />
+<link rel="stylesheet" href="#" th:href="@{/css/AdminLTE.min.css}" />
+<link rel="stylesheet" href="#"
+	th:href="@{/css/skins/_all-skins.min.css}" />
 
-    <!--Bootstrap Select-->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css"/>
+<!--Bootstrap Select-->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
 
-    <!--[if lt IE 9]>
+<!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="icon" href="#" th:href="@{/img/favicon.ico}" type="image/x-icon"/>
+<link rel="icon" href="#" th:href="@{/img/favicon.ico}"
+	type="image/x-icon" />
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+<!-- jQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <script src="#" th:src="@{/js/app.min.js}"></script>
-    <script src="#" th:src="@{/js/jquery.slimscroll.min.js}"></script>
-    <script src="#" th:src="@{/js/select2.full.min.js}"></script>
-    <script src="#" th:src="@{/js/region.js}"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<script src="#" th:src="@{/js/app.min.js}"></script>
+<script src="#" th:src="@{/js/jquery.slimscroll.min.js}"></script>
+<script src="#" th:src="@{/js/select2.full.min.js}"></script>
+<script src="#" th:src="@{/js/region.js}"></script>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 //	setInterval(function(){
 
     			// GET REQUEST
     				//event.preventDefault();
     				//ajaxGet();
     	//  	},1000);
-    				setInterval(ajaxGet,3000);
+ $(document).ready(function () {   
+	 ajaxGet();
+//setInterval(ajaxGet,3000);
+ });
 
     			// DO GET
     			function ajaxGet() {
@@ -63,7 +79,7 @@
     					success : function(result) {
     						if (result.status == "success") {
     							//$('#getResultDiv ul').empty();
-    										$('#hh').text	(
+    										$('#nbreCom').text	(
     												result.data);
     						
     							console.log("Success: ", result);}
@@ -101,77 +117,66 @@
     </script>
 </head>
 <body class="hold-transition skin-blue fixed sidebar-mini fuelux">
-<div class="wrapper">
-    <!-- Main Header -->
-    <header class="main-header">
-        <!-- Logo -->
-        <a href="#" th:href="@{/}" class="logo">
-            <span class="logo-mini"><b>A</b>D</span>
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Rapid</b>Livraison</span>
-        </a>
+	<div class="wrapper">
+		<!-- Main Header -->
+		<header class="main-header">
+			<!-- Logo -->
+			<a href="#" th:href="@{/}" class="logo"> <span class="logo-mini"><b>A</b>D</span>
+				<!-- logo for regular state and mobile devices --> <span
+				class="logo-lg"><b>Rapid</b>Livraison</span>
+			</a>
 
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
-            </a>
-            <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <!-- User Account Menu -->
-                    <li class="dropdown user user-menu">
+			<!-- Header Navbar -->
+			<nav class="navbar navbar-static-top" role="navigation">
+				<!-- Sidebar toggle button-->
+				<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
+					role="button"> <span class="sr-only">Toggle navigation</span>
+				</a>
+				<!-- Navbar Right Menu -->
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+						<!-- User Account Menu -->
+						  <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
-                        <a  class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-off"><span th:href="@{/logout}"> Se déconnecter</span>&nbsp;</span>
-                        </a>
+                       
+                            <a  class="glyphicon glyphicon-off" th:href="@{/logout}"> Se déconnecter</a>
+                     
                       
-                            
-<!--         <div class="col-md-4">
-<a href="#" th:href="@{/user/changepassword}" class="btn btn-default btn-flat">Change password</a>
-</div>
-<div class="col-md-4">
- <a href="#" class="btn btn-default btn-flat">Modifier le profil</a>
-</div>
-<div class="col-md-4">
-     <a href="#" th:href="@{/logout}" class="btn btn-default btn-flat">Se déconnecter</a>
-</div>-->
                             </li>
-                        </ul>
-                    
-                            </div>
-        </nav>
-    </header>
-    <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+					</ul>
 
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
+				</div>
+			</nav>
+		</header>
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar">
 
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel">
-            </div>
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
 
-            <!-- Sidebar Menu -->
-            <ul class="sidebar-menu">
-                <li class="header">Menu</li>
+				<!-- Sidebar user panel (optional) -->
+				<div class="user-panel"></div>
 
-                <li class="treeview" id="datamaster" sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="#"><i class="glyphicon glyphicon-folder-open"></i> <span>maître de données</span>
-                        <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a class="glyphicon glyphicon-user"  th:href="@{/chauffeur/list}">gestion des chauffeurs</a></li>
-                        <li><a th:href="@{/vehicule/list}">gestion des véhicules</a></li>
-                        <li><a class="glyphicon glyphicon-user"  th:href="@{/marchand/list}">gestion des marchands</a></li>
+				<!-- Sidebar Menu -->
+				<ul class="sidebar-menu">
+					  <a href="/admin"> <li class="header">Menu</li></a>
 
-                    </ul>
-                </li>
+					<li class="treeview" id="datamaster"
+						sec:authorize="hasRole('ROLE_ADMIN')"><a href="#"><i
+							class="glyphicon glyphicon-folder-open"></i> <span>maître
+								de données</span> <span class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span> </a>
+						<ul class="treeview-menu">
+							<li><a class="glyphicon glyphicon-user"
+								th:href="@{/chauffeur/list}">gestion des chauffeurs</a></li>
+							<li><a th:href="@{/vehicule/list}">gestion des véhicules</a></li>
+							<li><a class="glyphicon glyphicon-user"
+								th:href="@{/marchand/list}">gestion des marchands</a></li>
 
-                <li class="treeview" id="kegiatandosen" sec:authorize="hasRole('KEGIATAN')">
+						</ul></li>
+
+					 <li class="treeview" id="kegiatandosen" sec:authorize="hasRole('ROLE_ADMIN')">
                     <a href="#"><i class="fa fa-inbox"></i> <span> Gestion de Livraison</span>
                         <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -179,60 +184,60 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li><a th:href="@{/affectation/list}">Affection des livraison</a></li>
+                        <li><a th:href="@{/SuiviEtatAdmin}">Suivi l'etat de commande</a></li>
 
-                    </ul> 
-                   <li class="treeview" id="laporan">
-                    <a th:href="@{/list}"><i class="glyphicon glyphicon glyphicon-bell"></i> <span> gestion des demandes <span class="badge badge-light" id="hh"></span> </span>
-                        <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                    </a>
-                </li>
-   
-                <li class="treeview" id="laporan">
-                    <a href="#"><i class="glyphicon glyphicon-map-marker"></i> <span> Trajet des colis </span>
-                        <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                    </a>
-                </li>
-
-   <li class="treeview" id="datamaster" sec:authorize="hasRole('ROLE_ADMIN')">
-                     <a href="#"><i class="  glyphicon glyphicon-cog"></i> <span> paramétres</span>
-                        <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a class="glyphicon glyphicon-user"  th:href="@{/modifierProfil}">modifier votre profil</a></li>
-                        
                     </ul>
-                </li>
+					<li class="treeview" id="laporan"><a th:href="@{/list}"><i
+							class="glyphicon glyphicon glyphicon-bell"></i> <span>
+								gestion des demandes <span class="badge badge-light"
+								id="nbreCom"></span>
+						</span> <span class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span> </a></li>
 
-            </ul>
-            <!-- /.sidebar-menu -->
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+					<li class="treeview" id="laporan"><a href="#"><i
+							class="glyphicon glyphicon-map-marker"></i> <span> Trajet
+								des colis </span> <span class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span> </a></li>
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+					<li class="treeview" id="datamaster"
+						sec:authorize="hasRole('ROLE_ADMIN')"><a href="#"><i
+							class="  glyphicon glyphicon-cog"></i> <span> paramétres</span> <span
+							class="pull-right-container"> <i
+								class="fa fa-angle-left pull-right"></i>
+						</span> </a>
+						<ul class="treeview-menu">
+							<li><a class="glyphicon glyphicon-user"
+								th:href="@{/modifierProfil}">modifier votre profil</a></li>
 
-        <section class="content-header" layout:fragment="breadcrumb"></section>
-        <!-- Content Header (Page header) -->
-        <!-- Main content -->
-        <section class="content" layout:fragment="content">Di sini content utama</section>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <!-- Main Footer -->
-    <div class="control-sidebar-bg"></div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-<!--Bootstrap Select-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-<script type="text/javascript">
+						</ul></li>
+
+				</ul>
+				<!-- /.sidebar-menu -->
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+
+			<section class="content-header" layout:fragment="breadcrumb"></section>
+			<!-- Content Header (Page header) -->
+			<!-- Main content -->
+			<section class="content" layout:fragment="content"></section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+		<!-- Main Footer -->
+		<div class="control-sidebar-bg"></div>
+	</div>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+	<!--Bootstrap Select-->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript">
     $(document).ready(function () {
 
         $(function () {

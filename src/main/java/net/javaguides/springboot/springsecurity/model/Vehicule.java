@@ -20,13 +20,29 @@ public class Vehicule {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_vehicule", nullable = false)
 	private Long id;
+
 	@Column(name = "marque")
 	private String marque;
-	
+
 	@Column(name = "dispo")
 	private String dispo;
-	
 
+	@Column(name = "matricule")
+	private String matricule;
+
+	@Column(name = "capacité")
+	private float capacite;
+
+	// mapping vehicule admin
+	@ManyToOne
+	@JoinColumn(name = "id_admin")
+	private Admin adminA;
+
+	// mapping vehicule affectationcommande
+	@OneToMany(mappedBy = "VehiculeV")
+	private Set<AffectationCommande> affectVehicule = new HashSet<AffectationCommande>();
+
+	// getters et setters
 	public String getDispo() {
 		return dispo;
 	}
@@ -34,20 +50,6 @@ public class Vehicule {
 	public void setDispo(String dispo) {
 		this.dispo = dispo;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Véhicule [id=" + id + ", marque=" + marque + ", capacite=" + capacite
-				+ ", matricule=" + matricule + "]";
-	}
-
-	@Column(name = "capacité")
-	private float capacite;
-
-	@ManyToOne
-	@JoinColumn(name = "id_admin")
-	private Admin adminA;
 
 	public Long getId() {
 		return id;
@@ -73,9 +75,6 @@ public class Vehicule {
 		this.capacite = capacite;
 	}
 
-	@Column(name = "matricule")
-	private String matricule;
-
 	public String getMatricule() {
 		return matricule;
 	}
@@ -91,8 +90,11 @@ public class Vehicule {
 	public void setAdminA(Admin adminA) {
 		this.adminA = adminA;
 	}
-	//mapping vehicule affectationcommande 
-	@OneToMany(mappedBy="VehiculeV")
-	private Set<AffectationCommande>affectVehicule =new HashSet<AffectationCommande>();
+
+	@Override
+	public String toString() {
+		return "Véhicule [id=" + id + ", marque=" + marque + ", capacite=" + capacite + ", matricule=" + matricule
+				+ "]";
+	}
 
 }

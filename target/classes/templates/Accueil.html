@@ -1,5 +1,8 @@
+<!-- c'est la page d'accueil coté marchand -->
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- insertion de dragment head.html -->
 <head th:insert="head.html"><meta charset="utf-8" />
 </head>
 
@@ -22,10 +25,11 @@
         <div class="site-mobile-menu-body"></div>
       </div>
 
-
+<!-- insertion de fragment bar.html -->
       <div class="top-bar" th:insert="bar.html">
     
       </div>
+      <!-- insertion de fragment header.html -->
        <header class="site-navbar js-sticky-header site-navbar-target" role="banner" th:insert="Header.html">
 
        
@@ -113,7 +117,7 @@
           </div>
         </div>
  </div>
-   
+   <!-- insertion de dragment script.html -->
     <div th:insert="script.html"></div>
   </body>
 

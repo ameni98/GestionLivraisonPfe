@@ -2,15 +2,10 @@ package net.javaguides.springboot.springsecurity.model;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-@Entity
 
-//@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+@Entity
 public class Gouvernerat {
 
 	@Id
@@ -18,17 +13,19 @@ public class Gouvernerat {
 	@Column(name = "id_gouvernerat", nullable = false)
 	private Long id;
 
-	
 	@Column(name = "nom", length = 255, nullable = true)
 	private String nom;
+
 	@Column(name = "libelle", length = 255, nullable = true)
 	private String libelle;
-	
-	//mapping gouvernerat ville
-	 @JsonManagedReference
-	@OneToMany(mappedBy="gouverneratG",fetch = FetchType.LAZY)
-	private Set<Ville>VillesGouvernerat =new HashSet<Ville>();
 
+	// mapping gouvernerat ville
+	@JsonManagedReference
+	@OneToMany(mappedBy = "gouverneratG", fetch = FetchType.LAZY)
+	private Set<Ville> VillesGouvernerat = new HashSet<Ville>();
+
+	
+	// getters et setters
 	public Long getId() {
 		return id;
 	}
@@ -42,10 +39,10 @@ public class Gouvernerat {
 	}
 
 	public void setNom(String nom) {
-		this.nom=nom;
+		this.nom = nom;
 	}
-	
-public String getLibelle() {
+
+	public String getLibelle() {
 		return libelle;
 	}
 
@@ -53,13 +50,14 @@ public String getLibelle() {
 		this.libelle = libelle;
 	}
 
-public void addVilleGouvernerat(Ville v)
-{
+	public void addVilleGouvernerat(Ville v) {
 
-v.setGouverneratG(this);
-VillesGouvernerat.add(v);
+		v.setGouverneratG(this);
+		VillesGouvernerat.add(v);
 
-}
+	}
 
-public Set<Ville> getVillesGouvernerat() {return VillesGouvernerat;}
+	public Set<Ville> getVillesGouvernerat() {
+		return VillesGouvernerat;
+	}
 }

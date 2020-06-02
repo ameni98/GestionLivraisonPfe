@@ -1,4 +1,6 @@
-<!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
+<!--/*en utilisant tyhmleaf templating engine chaque jeton sera remplacé par leurs titres respectifs dans la page résultante */-->
+<!-- appel à la layout.html -->
+<!--layout decorate spécifie le modèle de mise en page à décorer avec le modèle de contenu actuel-->
 <html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
 <head>
 <title>véhicule</title>
@@ -15,8 +17,8 @@ select.readonly {
  <script >
 	// JavaScript Document
 			 $(function() 
-			 {//passage de variable vehicule de controller à javascript pour tester s'il s'agit d'ajout c'est à dire vehicule est 
-			//est null on va mettre le select de disponibilié est readonly 
+			 {//passage de variable vehicule de controller à javascript pour tester s'il s'agit d'ajout (c'est à dire vehicule  
+			//est null )on va mettre le select de disponibilié est readonly 
 		 var vehicule = "[[${vehi}]]";	
 		 var preventDefaultBehavior = function(e) {
 			    e.preventDefault();      
@@ -41,6 +43,7 @@ select.readonly {
 	
 </head>
 <body>
+<!-- appel au fragment breadcrumb qui correspond au header de la page -->
 	<div layout:fragment="breadcrumb">
 		<h1 th:text="${titre}"></h1>
 		<ol class="breadcrumb">
@@ -48,6 +51,7 @@ select.readonly {
 			<li class="active" th:text="${titre}"></li>
 		</ol>
 	</div>
+	<!-- appel au fragment breadcrumb qui correspond au contenu de la page -->
 	<div layout:fragment="content">
 		<div class="row">
 			<div class="col-md-6">
@@ -67,12 +71,12 @@ select.readonly {
 								class="form-control" id="matricule"
 								placeholder="saisir le matricule de véhicule"
 								th:classappend="${#fields.hasErrors('matricule')}?'inval':''" />
-<!-- ici s'il y aura erreur on ajoute la classe inval crée au niveau debalise style l'input sinon rien n'est ajouté -->
+<!-- ici s'il y aura erreur on ajoute la classe inval crée au niveau de balise style à l'input sinon rien n'est ajouté -->
 
 							<label class="control-label error-label"
 								th:if="${#fields.hasErrors('matricule')}"
 								th:errors="*{matricule}"> </label>
-	<!-- ici s'il y aura erreur on ajoute un label auquel un message d'erreur d'affiche -->
+	<!-- ici s'il y aura erreur on ajoute un label auquel un message d'erreur s'affiche -->
 						</div>
 
 
@@ -133,9 +137,9 @@ select.readonly {
 
 						<div class="form-group">
 							<a th:href="@{/vehicule/list}" class="btn btn-default"
-								role="button" title="Back list"> <span aria-hidden="true"></span>retourner
+								role="button" title="Back list"> <span aria-hidden="true"></span>Retourner
 							</a>
-							<button type="submit" class="box-title btn btn-primary"
+							<button type="submit" class="box-title btn btn-primary" 
 								title="Save Data">Enregistrer</button>
 						</div>
 				</div>

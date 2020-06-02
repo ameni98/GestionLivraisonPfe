@@ -1,0 +1,163 @@
+<!--/*en utilisant tyhmleaf templating engine chaque jeton sera remplacé par leurs titres respectifs dans la page résultante */-->
+<!-- appel à la layout.html -->
+<!--layout decorate spécifie le modèle de mise en page à décorer avec le modèle de contenu actuel-->
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link rel="icon" href="#" th:href="@{/img/favicon.ico}" type="image/x-icon"/>
+    <style type="text/css">
+    <style>
+th {
+	text-align: center;
+	/*vertical-align: center;
+ /* display:inline-block;*/
+	vertical-align: middle;
+	border-color: black;
+	*/
+}
+
+.eBtn {
+	display: none;
+}
+
+.table-bordered>thead>tr>th {
+	border-right-width: 5px;
+	border-left-width: 5px;
+	border-top-width: 5px;
+	/*    border-bottom-width: 5px;*/
+}
+/* pour le scroll*/
+table {
+	display: block;
+	overflow-x: auto;
+	white-space: nowrap;
+	border: 1;
+}
+
+thead:nth-child(1):nth-child(3) {
+	border-right-width: 5px;
+	border-left-width: 5px;
+}
+    
+    </style>
+</head>
+<body>
+
+	<!-- appel au fragment breadcrumb qui correspond au header de la page -->
+	<div layout:fragment="breadcrumb">
+		<h1>Liste des commandes</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> admin</a></li>
+			<li class="active">List des commandes</li>
+		</ol>
+	</div>
+	<!-- appel au fragment content qui correspond au contenu de la page -->
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+							<div class="box-tools">
+							<form th:action="@{/demande/list}" method="get">
+								<div class="input-group input-group-sm" style="width: 250px;">
+									<!-- ici c'est l'input de la recherche   -->
+									<!--si la valeur est null on affiche cet input avec ses classes -->
+									<input type="text" name="value" class="form-control pull-right"
+										placeholder="Rechercher par ville" th:value="${valeur}" />
+									<!--sinon on affiche l'input avec th:value -->
+
+									<div class="input-group-btn">
+										<!-- ici la bouton submit avec l'icon rechercher -->
+										<button type="submit" class="btn btn-default">
+											<i class="fa fa-search"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					
+					<br />
+
+					<!-- /.box-header -->
+					<div class="box-body">
+					<div class="table-responsive">
+							<table class="table table-bordered table-hover">
+								<thead>
+									<!--affichage de l'entete de tableau -->
+									<tr id="en_tete">
+									
+										<th rowspan="2"><a class="sorted">Date commande</th>
+										<th class="fx" rowspan="2"><a class="sorted">Etat de
+												commande</th>
+										<th colspan="7"><a class="sorted">Information de
+												l'expéditeur</th>
+										<th colspan="8"><a class="sorted"> Information de
+												destinataire</th>
+										<th colspan="2"><a class="sorted">Information de
+												marchandises</th>
+									</tr>
+									<tr>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">Adresse</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">ville</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">Gouvernerat</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">nom</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">prénom</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">Num
+													de téléphone</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">code
+													postale</th>
+
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">Adresse</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">ville</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">Gouvernerat</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">nom</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">prénom</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">Raison
+													sociale</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">Num
+													de téléphone</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">code
+													postale</th>
+
+
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">poids</th>
+										<th><a class="fa fa-fw fa-sort"><a class="sorted">nature</th>
+
+									</tr>
+								</thead>
+								<tbody id="tabBody">
+									<!--ici on fait le parcours de la liste des commandes -->
+									<tr th:each="demande,stat: ${demandes}" th:id="${stat.index}"
+										class="ligne">
+										<td th:text="${demande.date_com}"></td>
+										<td th:text="${demande.nomEtat}"></td>
+										<td th:text="${demande.adresse_marchand}"></td>
+										<td th:text="${demande.nomVilleM}"></td>
+										<td th:text="${demande.nomGouverneratM}"></td>
+										<td th:text="${demande.nom}"></td>
+										<td th:text="${demande.prenom}"></td>
+										<td th:text="${demande.tel}"></td>
+										<td th:text="${demande.code_Postale_marchand}"></td>
+
+										<td th:text="${demande.adresse_client}"></td>
+										<td th:text="${demande.nomVilleC}"></td>
+										<td th:text="${demande.nomGouverneratC}"></td>
+
+										<td th:text="${demande.nom_client}"></td>
+										<td th:text="${demande.prenom_client}"></td>
+										<td th:text="${demande.raison_sociale}"></td>
+										<td th:text="${demande.numTel_client}"></td>
+										<td th:text="${demande.code_Postale_client}"></td>
+										<td th:text="${demande.poids}" id="poids"></td>
+										<td th:text="${demande.desc_Colis}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				
+		
+</body>
+</html>

@@ -5,41 +5,67 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "chauffeur")
 @PrimaryKeyJoinColumn(name = "id")
+//Cette annotation spécifie une colonne de clé primaire qui est utilisée comme clé étrangère pour se joindre à la table user
+
 public class Chauffeur extends User {
 
-    @Id
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+	@Column(name = "id", nullable = false)
 	private Long id;
-    @ManyToOne
-	@JoinColumn(name="id_admin")	
+
+	// mapping chauffeur admin
+	@ManyToOne
+	@JoinColumn(name = "id_admin")
 	private Admin adminA;
-    @Column(name = "nom")
-    private String nom;
-    @Column(name = "TypeDeplacement")
-    private String TypeDeplacement;
-    public String getTypeDeplacement() {
-  		return TypeDeplacement;
-  	}
 
-  	public void setTypeDeplacement(String typeDeplacement) {
-  		TypeDeplacement = typeDeplacement;
-  	}
+	@Column(name = "nom")
+	private String nom;
 
-    public Long getId()
-    {
-    	return id;
-    }
-    
-    public void setId(Long id)
-    {
-    	this.id=id;
-    }
-    public Admin getAdminA() {
+	@Column(name = "TypeDeplacement")
+	private String TypeDeplacement;
+
+	@Column(name = "NumTel")
+	private String NumTel;
+
+	@Column(name = "DateNai")
+	private String DateNai;
+
+	@Column(name = "NumPermis")
+	private String NumPermis;
+
+	@Column(name = "cin")
+	private String cin;
+
+	@Column(name = "prenom")
+	private String prenom;
+
+	// mapping chauffeur et etatDispo
+	@OneToOne(fetch = FetchType.LAZY)
+	private EtatDispo etatDispo;
+
+	// getters et setters
+
+	public String getTypeDeplacement() {
+		return TypeDeplacement;
+	}
+
+	public void setTypeDeplacement(String typeDeplacement) {
+		TypeDeplacement = typeDeplacement;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Admin getAdminA() {
 		return adminA;
 	}
 
@@ -70,8 +96,7 @@ public class Chauffeur extends User {
 	public void setDateNai(String dateNai) {
 		DateNai = dateNai;
 	}
-	@Column(name = "NumTel")
-    private String NumTel;
+
 	public String getNumTel() {
 		return NumTel;
 	}
@@ -79,9 +104,8 @@ public class Chauffeur extends User {
 	public void setNumTel(String numTel) {
 		NumTel = numTel;
 	}
-	@Column(name = "prenom")
-    private String prenom;
-    public String getNumPermis() {
+
+	public String getNumPermis() {
 		return NumPermis;
 	}
 
@@ -96,31 +120,10 @@ public class Chauffeur extends User {
 	public void setCin(String cin) {
 		this.cin = cin;
 	}
-	
-    
-    @Column(name = "DateNai")
-    private String DateNai;
-    @Column(name = "NumPermis")
-    private String NumPermis;
-    @Column(name = "cin")
-    private String cin;
-    //mapping chauffeur affectationCommande
-    @OneToMany(mappedBy="chauffeurC")
-    private Set<AffectationCommande>affectChauufeurs =new HashSet<AffectationCommande>();
-    
-    
-   //mapping chauffeur et etatDispo
-   
-    
-   // @OneToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    
-  
-    
-    
-   
-	
-	 @OneToOne (fetch = FetchType.LAZY)
-	  private EtatDispo etatDispo;
+
+	// mapping chauffeur affectationCommande
+	@OneToMany(mappedBy = "chauffeurC")
+	private Set<AffectationCommande> affectChauufeurs = new HashSet<AffectationCommande>();
 
 	public EtatDispo getEtatDispo() {
 		return etatDispo;
@@ -128,12 +131,9 @@ public class Chauffeur extends User {
 
 	public void setEtatDispo(EtatDispo etatDispo) {
 		this.etatDispo = etatDispo;
-		
-		
-		
+
 	}
 
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -195,9 +195,5 @@ public class Chauffeur extends User {
 			return false;
 		return true;
 	}
-	
-	
-	
 
-    
 }

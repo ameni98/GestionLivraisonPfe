@@ -1,14 +1,167 @@
 <!--/* Thymeleaf templating engine, Each token will be replaced by their respective titles in the resulting page. */-->
-<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="~{/layout}">
 
 <head>
     <meta charset="UTF-8"/>
     <title>Home</title>
     <link rel="icon" href="#" th:href="@{/img/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- IonIcons -->
+  <link href="css/styleCalen.css" rel='stylesheet' type='text/css' />
+  
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Custom Theme files -->
+<!--//theme-style-->
+<style>
+div.left {
+ padding-left
+  :250px;
+  
+}
+</style>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href='//fonts.googleapis.com/css?family=Maven+Pro:700,400' rel='stylesheet' type='text/css'>
+<!--//theme-style-->
+ <!--Calender-->
+	  <link rel="stylesheet" href="css/clndr.css" type="text/css" />
+	  <script src="js/underscore-min.js"></script>
+	  <script src= "js/moment-2.2.1.js"></script>
+	  <script src="js/clndr.js"></script>
+	  <script src="js/site.js"></script>
+	<!--End Calender-->
+	<script src="js/jClocksGMT.js"></script>
+<script src="js/jquery.rotate.js"></script>
+<link rel="stylesheet" href="css/jClocksGMT.css">
+<script>
+            $(document).ready(function(){
+                $('#clock_hou').jClocksGMT({offset: '-5', hour24: true});
+                $('#clock_dc').jClocksGMT({offset: '-4', digital: false});
+                $('#clock_india').jClocksGMT({offset: '+25.0'});
+            });
+</script>
+<!---Google Analytics Designmaz.net-->
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-35751449-15', 'auto');ga('send', 'pageview');</script>
+  	
 </head>
 <body>
 <div layout:fragment="content">
-    <h1>Rapid Livraison</h1>
+   <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner" > 
+              <div>
+              <h3><i th:text="${nbreDemandes}"></i></h3>
+               <!--  h3 th:text="${nbreCommandes}"> </h3> -->
+               </div>
+                <p>nombre des commandes</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="/SuiviEtatAdmin" class="small-box-footer">Liste des commandes <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+              <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+            <h3>  <i th:text="${nbreMarchands}"></i></h3>
+
+                <p>nombre des marchands</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="/marchand/list" class="small-box-footer">Liste de marchands <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3><i th:text="${nbreChauffeurs}"></i></h3>
+
+                <p>Nombre des chauffeurs</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="/chauffeur/list" class="small-box-footer">Liste des chauffeurs <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3><i th:text="${nbreVahicules}"></i></h3>
+
+                <p>Nombre des camions</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <a href="/vehicule/list" class="small-box-footer">Liste des camions <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+          <div class="main">
+		    <div class="cloc">
+					<div id="clock_india" class="clock_container">            
+						<div class="digital">
+							<span class="hr"></span><span class="minute"></span> <span >AM</span>
+						</div>
+						<div class="clockHolder">
+							<div class="rotatingWrapper"><img class="hour" src="images/clock_hour.png" alt=""/></div>
+							<div class="rotatingWrapper"><img class="min" src="images/clock_min.png" alt=""/></div>
+							<div class="rotatingWrapper"><img class="sec" src="images/clock_sec.png" alt=""/></div>
+							<img class="clock" src="images/clock.png" alt=""/> 
+						</div>             
+					</div>
+					</div> 
+					<div  class="left">
+					 <div class="mini-cal">
+			<div class="calender">
+					<div class="column_right_grid calender">
+                      <div class="cal1"><div class="clndr"><div class="clndr-controls"><div class="clndr-control-button"><p class="clndr-previous-button">previous</p></div><div class="month">September 2015</div><div class="clndr-control-button rightalign"><p class="clndr-next-button">next</p></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr><td class="day past adjacent-month last-month calendar-day-2015-08-30"><div class="day-contents">30</div></td><td class="day past adjacent-month last-month calendar-day-2015-08-31"><div class="day-contents">31</div></td><td class="day past calendar-day-2015-09-01"><div class="day-contents">1</div></td><td class="day past calendar-day-2015-09-02"><div class="day-contents">2</div></td><td class="day past calendar-day-2015-09-03"><div class="day-contents">3</div></td><td class="day past calendar-day-2015-09-04"><div class="day-contents">4</div></td><td class="day past calendar-day-2015-09-05"><div class="day-contents">5</div></td></tr><tr><td class="day past calendar-day-2015-09-06"><div class="day-contents">6</div></td><td class="day past calendar-day-2015-09-07"><div class="day-contents">7</div></td><td class="day past calendar-day-2015-09-08"><div class="day-contents">8</div></td><td class="day past calendar-day-2015-09-09"><div class="day-contents">9</div></td><td class="day past event calendar-day-2015-09-10"><div class="day-contents">10</div></td><td class="day past event calendar-day-2015-09-11"><div class="day-contents">11</div></td><td class="day past event calendar-day-2015-09-12"><div class="day-contents">12</div></td></tr><tr><td class="day past event calendar-day-2015-09-13"><div class="day-contents">13</div></td><td class="day past event calendar-day-2015-09-14"><div class="day-contents">14</div></td><td class="day past calendar-day-2015-09-15"><div class="day-contents">15</div></td><td class="day past calendar-day-2015-09-16"><div class="day-contents">16</div></td><td class="day past calendar-day-2015-09-17"><div class="day-contents">17</div></td><td class="day past calendar-day-2015-09-18"><div class="day-contents">18</div></td><td class="day past calendar-day-2015-09-19"><div class="day-contents">19</div></td></tr><tr><td class="day past calendar-day-2015-09-20"><div class="day-contents">20</div></td><td class="day past event calendar-day-2015-09-21"><div class="day-contents">21</div></td><td class="day past event calendar-day-2015-09-22"><div class="day-contents">22</div></td><td class="day past event calendar-day-2015-09-23"><div class="day-contents">23</div></td><td class="day past calendar-day-2015-09-24"><div class="day-contents">24</div></td><td class="day past calendar-day-2015-09-25"><div class="day-contents">25</div></td><td class="day today calendar-day-2015-09-26"><div class="day-contents">26</div></td></tr><tr><td class="day calendar-day-2015-09-27"><div class="day-contents">27</div></td><td class="day calendar-day-2015-09-28"><div class="day-contents">28</div></td><td class="day calendar-day-2015-09-29"><div class="day-contents">29</div></td><td class="day calendar-day-2015-09-30"><div class="day-contents">30</div></td><td class="day adjacent-month next-month calendar-day-2015-10-01"><div class="day-contents">1</div></td><td class="day adjacent-month next-month calendar-day-2015-10-02"><div class="day-contents">2</div></td><td class="day adjacent-month next-month calendar-day-2015-10-03"><div class="day-contents">3</div></td></tr></tbody></table></div></div>
+				    </div>
+					<div class="cal-pos a">
+						<ul>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class="cal-pos">
+						<ul>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+			</div>
+		</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+		<div class="clear"></div>
+		<!--End Calender-->
+        
+        
+        
 </div>
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
 </body>
 </html>

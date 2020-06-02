@@ -8,12 +8,12 @@
 <title>Livraison &mdash;</title>
 <meta charset="utf-8">
 <meta name="viewport"
-  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" type="text/css"
-  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
 <link
-  href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700"
-  rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Rubik:300,400,700|Oswald:400,700"
+	rel="stylesheet">
 
 <link rel="stylesheet" href="fonts/icomoon/style.css">
 
@@ -32,19 +32,25 @@
 <link rel="stylesheet" href="css/style.css">
 
 <link rel="stylesheet" type="text/css"
-  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
 <style>
- .displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto }
-  
-   
-.inval{ border: 1px solid red;}
-.error-label{color:red;
+.displayed {
+	display: block;
+	margin-left: auto;
+	margin-right: auto
 }
-  .success{color:#FFA500;
-    }
+
+.inval {
+	border: 1px solid red;
+}
+
+.error-label {
+	color: red;
+}
+
+.success {
+	color: #FFA500;
+}
 </style>
 
 <script type="text/javascript" th:inline="javascript">    
@@ -53,172 +59,172 @@
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
-  data-offset="300">
+	data-offset="300">
 
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
+	<div id="overlayer"></div>
+	<div class="loader">
+		<div class="spinner-border text-primary" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
 
-  <div class="site-wrap" id="home-section">
+	<div class="site-wrap" id="home-section">
 
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-
-
-    <div class="top-bar">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span>
-              <span class="d-none d-md-inline-block">RapidLivraison2020@gmail.com</span></a>
-            <span class="mx-md-2 d-inline-block"></span> <a href="#" class=""><span
-              class="mr-2  icon-phone"></span> <span
-              class="d-none d-md-inline-block">+ (216) 54542196</span></a>
+		<div class="site-mobile-menu site-navbar-target">
+			<div class="site-mobile-menu-header">
+				<div class="site-mobile-menu-close mt-3">
+					<span class="icon-close2 js-menu-toggle"></span>
+				</div>
+			</div>
+			<div class="site-mobile-menu-body"></div>
+		</div>
 
 
-            <div class="float-right">
-
-              <a href="#" class=""><span class="mr-2  icon-twitter"></span>
-                <span class="d-none d-md-inline-block">Twitter</span></a> <span
-                class="mx-md-2 d-inline-block"></span> <a href="#" class=""><span
-                class="mr-2  icon-facebook"></span> <span
-                class="d-none d-md-inline-block">Facebook</span></a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-    <header class="site-navbar js-sticky-header site-navbar-target"
-      role="banner">
-
-      <div class="container">
-        <div class="row align-items-center position-relative">
+		<div class="top-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span>
+							<span class="d-none d-md-inline-block">RapidLivraison2020@gmail.com</span></a>
+						<span class="mx-md-2 d-inline-block"></span> <a href="#" class=""><span
+							class="mr-2  icon-phone"></span> <span
+							class="d-none d-md-inline-block">+ (216) 54542196</span></a>
 
 
-          <div class="site-logo">
-            <a href="index.html" class="text-black"><span
-              class="text-primary">Rapid Livraison</span></a>
-          </div>
+						<div class="float-right">
 
-          <div class="col-12">
-            <nav class="site-navigation text-right ml-auto " role="navigation">
+							<a href="#" class=""><span class="mr-2  icon-twitter"></span>
+								<span class="d-none d-md-inline-block">Twitter</span></a> <span
+								class="mx-md-2 d-inline-block"></span> <a href="#" class=""><span
+								class="mr-2  icon-facebook"></span> <span
+								class="d-none d-md-inline-block">Facebook</span></a>
 
-              <ul
-                class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                <li><a th:href="@{/Accueil}" class="nav-link">Acceuil</a></li>
-                <li><a th:href="@{/Accueil#services-section}"
-                  class="nav-link">Services</a></li>
-                <li><a th:href="@{/}" class="nav-link">Expédier</a></li>
-                <li><a th:href="@{/commande}" class="nav-link">Historique
-                </a></li>
-                <li><a th:href="@{/suiviColis}" class="nav-link">Suivi
-                    vos colis </a></li>
-                <li><a th:href="@{/modifierProfilMarchand}" class="nav-link">Modifier
-                    votre profil</a></li>
-                <li sec:authorize="isAuthenticated()"><a
-                  class="glyphicon glyphicon-log-out" th:href="@{/logout}">Se
-                    déconnecter</a></li>
+						</div>
 
-              </ul>
-            </nav>
+					</div>
 
-          </div>
+				</div>
 
-          <div class="toggle-button d-inline-block d-lg-none">
-            <a href="#"
-              class="site-menu-toggle py-5 js-menu-toggle text-black"><span
-              class="icon-menu h3"></span></a>
-          </div>
+			</div>
+		</div>
+		<header class="site-navbar js-sticky-header site-navbar-target"
+			role="banner">
 
-        </div>
-    </header>
-  </div>
-  <div class="container">
-   
-   <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-     
-       <form role="form"th:object="${marchand}" method="post" th:action="@{/modifierProfilMarchand}"  >
+			<div class="container">
+				<div class="row align-items-center position-relative">
 
-            <fieldset id="field2" class="col-md-10">
-            
-            
-              <legend> Modifier profil </legend>
 
-              <div class="panel panel-default">
-                <div class="panel-body" id="panel-body">
-          <div class="form-group">
-            <label for="email" class="control-label">Adresse email</label> <input 
-              id="email" class="form-control" th:field="*{email}" 
-              th:classappend="${#fields.hasErrors('email')}?'inval':''"
-											/> <label
-										class="control-label error-label"
+					<div class="site-logo">
+						<a href="index.html" class="text-black"><span
+							class="text-primary">Rapid Livraison</span></a>
+					</div>
+
+					<div class="col-12">
+						<nav class="site-navigation text-right ml-auto " role="navigation">
+
+							<ul
+								class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+								<li><a th:href="@{/Accueil}" class="nav-link">Acceuil</a></li>
+								<li><a th:href="@{/Accueil#services-section}"
+									class="nav-link">Services</a></li>
+								<li><a th:href="@{/}" class="nav-link">Expédier</a></li>
+								<li><a th:href="@{/commande}" class="nav-link">Historique
+								</a></li>
+								<li><a th:href="@{/suiviColis}" class="nav-link">Suivi
+										vos colis </a></li>
+								<li><a th:href="@{/modifierProfilMarchand}"
+									class="nav-link">Modifier votre profil</a></li>
+								<li sec:authorize="isAuthenticated()"><a
+									class="glyphicon glyphicon-log-out" th:href="@{/logout}">Se
+										déconnecter</a></li>
+
+							</ul>
+						</nav>
+
+					</div>
+
+					<div class="toggle-button d-inline-block d-lg-none">
+						<a href="#"
+							class="site-menu-toggle py-5 js-menu-toggle text-black"><span
+							class="icon-menu h3"></span></a>
+					</div>
+				</div>
+		</header>
+	</div>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+
+				<form role="form" th:object="${marchand}" method="post"
+					th:action="@{/modifierProfilMarchand}">
+
+					<fieldset id="field2" class="col-md-10">
+
+
+						<legend> Modifier profil </legend>
+
+						<div class="panel panel-default">
+							<div class="panel-body" id="panel-body">
+								<div class="form-group">
+									<label for="email" class="control-label">Adresse email</label>
+									<!-- ici s'il y aura erreur on ajoute la classe inval crée au niveau de balise style à l'input sinon rien n'est ajouté -->
+
+									<input id="email" class="form-control" th:field="*{email}"
+										th:classappend="${#fields.hasErrors('email')}?'inval':''" />
+									<label class="control-label error-label"
 										th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
 
 									</label>
-         
-          </div>
-         <div class="form-group">
-            <label for="NumTel" class="control-label">Numéro de téléphone</label> <input
-              id="NumTel" class="form-control" th:field="*{tel}"  th:classappend="${#fields.hasErrors('tel')}?'inval':''"
-											/> <label
-										class="control-label error-label"
+
+								</div>
+								<div class="form-group">
+									<label for="NumTel" class="control-label">Numéro de
+										téléphone</label> <input id="NumTel" class="form-control"
+										th:field="*{tel}"
+										th:classappend="${#fields.hasErrors('tel')}?'inval':''" />
+									<label class="control-label error-label"
 										th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}">
 
 									</label>
-       
-          </div>
-       
-          <div class="form-group">
-            <label for="adresse" class="control-label">Adresse</label> <input
-              id="adresse" class="form-control" th:field="*{adresse}" 
-              th:classappend="${#fields.hasErrors('adresse')}?'inval':''"
-											/> <label
-										class="control-label error-label"
+
+								</div>
+
+								<div class="form-group">
+									<label for="adresse" class="control-label">Adresse</label> <input
+										id="adresse" class="form-control" th:field="*{adresse}"
+										th:classappend="${#fields.hasErrors('adresse')}?'inval':''" />
+									<label class="control-label error-label"
 										th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}">
 
 									</label>
-</div>
-          <div class="form-group ">
-            <button type="submit" class="btn btn-warning displayed">Modifier</button>
-           
-          </div>
-          <div th:if="${param.success}">
-					<div class="success text-center">Votre profile est modifié avec succés ! </div>
-				</div>
-</fieldset>
+								</div>
+								<div class="form-group ">
+									<button type="submit" class="btn btn-warning displayed">Modifier</button>
 
-        </form>
-           
-      </div>
-      </div>
-</div>
-      <script src="js/jquery-3.3.1.min.js"></script>
-      <script src="js/popper.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/owl.carousel.min.js"></script>
-      <script src="js/jquery.sticky.js"></script>
-      <script src="js/jquery.waypoints.min.js"></script>
-      <script src="js/jquery.animateNumber.min.js"></script>
-      <script src="js/jquery.fancybox.min.js"></script>
-      <script src="js/jquery.easing.1.3.js"></script>
-      <script src="js/aos.js"></script>
+								</div>
+								<div th:if="${param.success}">
+									<div class="success text-center">Votre profile est
+										modifié avec succés !</div>
+								</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.sticky.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/jquery.fancybox.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/aos.js"></script>
 
-      <script src="js/main.js"></script>
+	<script src="js/main.js"></script>
 </body>
 
-</html> 
+</html>
 

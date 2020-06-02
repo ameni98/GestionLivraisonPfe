@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import net.javaguides.springboot.springsecurity.model.EtatDispo;
 
 @Repository
+//etat dispo pour chauffeur
 public interface EtatDispoRepository extends JpaRepository<EtatDispo, Long> {
 
 }

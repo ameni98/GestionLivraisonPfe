@@ -5,24 +5,34 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "Marchand")
 @PrimaryKeyJoinColumn(name = "id")
+//Cette annotation spécifie une colonne de clé primaire qui est utilisée comme clé étrangère pour se joindre à la table user
 
 public class Marchand extends User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_marchand", nullable = false)
 	private Long id;
-    @Column(name = "adresse")
-    private String adresse;
-    @OneToMany(mappedBy="marchandM")
-	private Set<Commande>CommandesMarchand =new HashSet<Commande>();
-    public String getAdresse() {
-		return adresse;
-	}
 
+	@Column(name = "adresse")
+	private String adresse;
+
+	// mapping cmmande marchand
+	@OneToMany(mappedBy = "marchandM")
+	private Set<Commande> CommandesMarchand = new HashSet<Commande>();
+
+	@Column(name = "nom")
+	private String nom;
+
+	@Column(name = "Prenom")
+	private String Prenom;
+
+	@Column(name = "tel")
+	private String tel;
+
+	// getters et setters
 	public Long getId() {
 		return id;
 	}
@@ -31,14 +41,9 @@ public class Marchand extends User {
 		this.id = id;
 	}
 
-	/*public Set<Commande> getCommandesMarchand() {
-		return CommandesMarchand;
+	public String getAdresse() {
+		return adresse;
 	}
-
-	public void setCommandesMarchand(Set<Commande> commandesMarchand) {
-		CommandesMarchand = commandesMarchand;
-	}
-*/
 
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
@@ -67,19 +72,5 @@ public class Marchand extends User {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
-	@Column(name = "nom")
-    private String nom;
-    
-    @Column(name = "Prenom")
-    private String Prenom;
-    
-  
-    
-    @Column(name = "tel")
-    private String tel;
-    
-    
-    
 
 }

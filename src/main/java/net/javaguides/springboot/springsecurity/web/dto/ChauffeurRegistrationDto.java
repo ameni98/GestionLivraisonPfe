@@ -1,19 +1,52 @@
 package net.javaguides.springboot.springsecurity.web.dto;
 
-import javax.validation.constraints.AssertTrue;
+import java.util.List;
+
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.beans.factory.annotation.Value;
-
-import lombok.Builder.Default;
-import lombok.NonNull;
+import net.javaguides.springboot.springsecurity.model.Role;
 
 public class ChauffeurRegistrationDto {
 	private Long idEtat;
-	
+	private Long id;
+
+	@NotEmpty(message = "*ce champ est obligatoire")
+	private String nom;
+
+	@NotEmpty(message = "*ce champ est obligatoire")
+	private String prenom;
+
+	@NotEmpty(message = "*ce champ est obligatoire")
+	private String dateNai;
+
+	@Pattern(regexp = "^[5,2,9][0-9]{7}|{0}", message = "*invalid numéro de téléphone")
+	@NotEmpty(message = "*ce champ est obligatoire")
+
+	private String NumTel;
+	@NotEmpty(message = "*ce champ est obligatoire")
+
+	@Pattern(regexp = "[0-9]{2}/[0-9]{6}|{0}", message = "*invalid numéro de permis")
+	private String NumPermi;
+
+	@Pattern(regexp = "[0-9]{8}|{0}", message = "*Le numéro cin doit contenir 8 chiffres")
+	@NotEmpty(message = "*ce champ est obligatoire")
+	private String NumCin;
+
+	@NotEmpty(message = "*ce champ est obligatoire")
+	private String login;
+
+	@NotEmpty(message = "*ce champ est obligatoire")
+	private String MotPasse;
+
+	private String dateDeb;
+	private String dateFin;
+
+	// @NotEmpty(message="*ce champ est obligatoire")
+	// @Value("disponible")
+	private String etatDispo;
+
 	public Long getIdEtat() {
 		return idEtat;
 	}
@@ -21,6 +54,7 @@ public class ChauffeurRegistrationDto {
 	public void setIdEtat(Long idEtat) {
 		this.idEtat = idEtat;
 	}
+
 	private String TypeDeplacement;
 
 	public String getTypeDeplacement() {
@@ -30,7 +64,7 @@ public class ChauffeurRegistrationDto {
 	public void setTypeDeplacement(String typeDeplacement) {
 		TypeDeplacement = typeDeplacement;
 	}
-	private Long id;
+
 	public Long getId() {
 		return id;
 	}
@@ -38,36 +72,6 @@ public class ChauffeurRegistrationDto {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-@NotEmpty(message="*ce champ est obligatoire")
-	private String nom;
-@NotEmpty(message="*ce champ est obligatoire")
-	private String prenom;
-	@NotEmpty(message="*ce champ est obligatoire")
-	private String dateNai;
-	@Pattern( regexp="^[5,2,9][0-9]{7}|{0}" ,message ="*invalid numéro de téléphone")
-	@NotEmpty(message="*ce champ est obligatoire")
-
-	private String NumTel;
-	@NotEmpty(message="*ce champ est obligatoire")
-	@Pattern( regexp="[0-9]{2}/[0-9]{6}|{0}" ,message ="*invalid numéro de permis")
-	private String NumPermi;
-	@Pattern( regexp="[0-9]{8}|{0}" ,message ="*Le numéro cin doit contenir 8 chiffres")
-	@NotEmpty(message="*ce champ est obligatoire")
-	private String NumCin;
-	@NotEmpty(message="*ce champ est obligatoire")
-
-	private String login;
-	
-	@NotEmpty(message="*ce champ est obligatoire")
-
-	private String MotPasse;
-	//@NotEmpty(message="*ce champ est obligatoire")
-  //  @Value("disponible")
-	private String etatDispo;
-	
-	private String dateDeb;
-	private String dateFin;
 
 	public String getEtatDispo() {
 		return etatDispo;
@@ -156,40 +160,38 @@ public class ChauffeurRegistrationDto {
 	public void setDateFin(String dateFin) {
 		this.dateFin = dateFin;
 	}
-	public ChauffeurRegistrationDto(Long id, String nom, String prenom, String dateNai,String numTel,String numPermi, String numCin,
-			String etatDispo, String dateDeb, String dateFin,String login,String MotPasse, Long idEtat) {
+
+	public ChauffeurRegistrationDto(Long id, String nom, String prenom, String dateNai, String numTel, String numPermi,
+			String numCin, String etatDispo, String dateDeb, String dateFin, String login, String MotPasse,
+			Long idEtat) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNai = dateNai;
-	this.	NumTel = numTel;
-	this.	NumPermi = numPermi;
+		this.NumTel = numTel;
+		this.NumPermi = numPermi;
 		this.NumCin = numCin;
-	
+
 		this.etatDispo = etatDispo;
 		this.dateDeb = dateDeb;
 		this.dateFin = dateFin;
-		this.login=login;
-		this.MotPasse=MotPasse;
-		this.idEtat=idEtat;
+		this.login = login;
+		this.MotPasse = MotPasse;
+		this.idEtat = idEtat;
 	}
-	
-	public ChauffeurRegistrationDto(Long id, String nom, String prenom,String etatDispo, Long idEtat) {
+
+	public ChauffeurRegistrationDto(Long id, String nom, String prenom, String etatDispo, Long idEtat) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.etatDispo = etatDispo;	
-		this.idEtat=idEtat;
+		this.etatDispo = etatDispo;
+		this.idEtat = idEtat;
 	}
-	
-	
-	
-	
-	public ChauffeurRegistrationDto()
-	{
-		
+
+	public ChauffeurRegistrationDto() {
+
 	}
 
 	@Override
@@ -282,7 +284,11 @@ public class ChauffeurRegistrationDto {
 			return false;
 		return true;
 	}
+
+	public void setRoles(List<Role> asList) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
-	
 }

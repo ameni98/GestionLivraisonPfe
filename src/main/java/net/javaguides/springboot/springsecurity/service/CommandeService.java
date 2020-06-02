@@ -1,13 +1,19 @@
+
 package net.javaguides.springboot.springsecurity.service;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.provider.HibernateUtils;
 import org.springframework.stereotype.Service;
 
+import net.javaguides.springboot.springsecurity.model.Chauffeur;
 import net.javaguides.springboot.springsecurity.model.Colis;
 import net.javaguides.springboot.springsecurity.model.Commande;
+import net.javaguides.springboot.springsecurity.model.EtatCommande;
 import net.javaguides.springboot.springsecurity.repository.ColisRepositry;
 import net.javaguides.springboot.springsecurity.repository.CommandeRepositry;
 
@@ -20,11 +26,35 @@ public class CommandeService {
 	
 	public Commande addCommande(Commande commande)
 	{
-		//commande.addColisCommande(c);
-		return commandeRepositry.save(commande);
+		if (commande.getId() == 0) {
+
+			return commandeRepositry.save(commande);
+
 		
+		} else {
+			// c'est pour le cas de modification récupération des valeurs de l'objet
+			// chauffeur à partir de son id
+			Optional<Commande> com = commandeRepositry.findById(commande.getId());
+
+			if (com.isPresent()){
+		
+				Commande newEntity = com.get();
+				DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+				Date date = new Date();
+				EtatCommande EtCom = new EtatCommande();
+				EtCom.setId(2);
+				newEntity.setDate_Modif(format.format(date));
+				newEntity.setEtatCommandeE(EtCom);
+				//newEntity.setMarchandM(commande.getMarchandM().getId());
+				//newEntity.setDateCom(commande.getDateCom());
+				newEntity.setId(commande.getId());
+				System.out.print("hello");
+		return commandeRepositry.save(newEntity);
+			}
 			
 		
+		}
+		return commandeRepositry.save(commande);	
 	}
 	public Colis addColis(Colis c)
 	{
@@ -33,33 +63,36 @@ public class CommandeService {
 			
 		
 	}
-	/*public int nbreDemande() {
-		int nbr=0;
-		factory=HibernateUtils.getSessionFactory();
-		Session session=factory.openSession();
-		Transaction transaction=null;
-		try {
-			transaction=session.beginTransaction();
-			nbr=((Long) session.createQuery("select count(*) from commande where etat='En attente'").iterate().next()).intValue();
-			transaction.commit();
-			
-		}
-		catch(Exception e)
-		{
-			if (transaction!=null)
-			{transaction.rollback();
-			}
-				System.out.println("ERROR:"+e.getMessage());
-				
-			}
-			finally {
-				session.close(); 	
-			}
-	 
-		
-		
-		return  nbr;
-		
-	}*/
+	public Commande modifierEtat(Commande commande)
+	{if (commande.getId() == 0) {
+
+		return commandeRepositry.save(commande);
+
 	
+	} else {
+		// c'est pour le cas de modification récupération des valeurs de l'objet
+		// chauffeur à partir de son id
+		Optional<Commande> com = commandeRepositry.findById(commande.getId());
+
+		if (com.isPresent()){
+	
+			Commande newEntity = com.get();
+			DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+			Date date = new Date();
+			EtatCommande EtCom = new EtatCommande();
+			EtCom.setId(3);
+			newEntity.setDate_Modif(format.format(date));
+			newEntity.setEtatCommandeE(EtCom);
+			//newEntity.setMarchandM(commande.getMarchandM().getId());
+			//newEntity.setDateCom(commande.getDateCom());
+			newEntity.setId(commande.getId());
+			System.out.print("hello");
+	return commandeRepositry.save(newEntity);
+		}
+		
+	
+	}
+	return commandeRepositry.save(commande);	
 }
+	}
+

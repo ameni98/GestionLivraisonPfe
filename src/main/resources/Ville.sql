@@ -211,6 +211,12 @@ ON SCHEDULE  EVERY 1 Day
 DO 
 UPDATE etat_dispo set nom='disponible',date_deb='',date_fin='' where DATE(NOW())= (select ADDDATE(date_fin,1));
 
+INSERT INTO `user` (`id`, `email`, `nom_utilisateur`, `password`) VALUES ('0', 'RapidLivraison2020@gmail.com', 'admin', '$2a$10$6CW1agMzVzBhxDzK0PcxrO/cQcmN9h8ZriVEPy.6DJbVeyATG5mWe');
+INSERT INTO `role` (`id`, `name`) VALUES ('1', 'ROLE_ADMIN');
+INSERT INTO `admin` (`id`) VALUES ('0');
+INSERT INTO `users_roles` (`user_id`, `role_id`) VALUES ('0', '1');
+
+
 
 
 

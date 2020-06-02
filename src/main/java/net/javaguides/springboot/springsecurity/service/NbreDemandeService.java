@@ -11,10 +11,14 @@ public class NbreDemandeService {
 	
 	public int nbreDemandes()
 	{
-		int nbre=0;
+	int nbre=0;
 	 nbre=nbrRep.findById_etat();
+	return nbre;
+	}
+	public int nbreTotal() {
+		int nbre=0;
+		nbre=nbrRep.findNumberCom();
 		return nbre;
 	}
-	
 
 }

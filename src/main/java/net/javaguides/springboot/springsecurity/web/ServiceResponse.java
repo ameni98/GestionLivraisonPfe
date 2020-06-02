@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 	@AllArgsConstructor
 	@NoArgsConstructor
 	@ToString
+	//pour rest controllerAdmin
 	public class ServiceResponse<T> {
 		
 		private String status;
